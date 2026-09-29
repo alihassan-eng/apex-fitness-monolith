@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand Typography Alignment */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Strict Color Matrix Token Set (WCAG 2.2 AAA Compliant Contrast) */
+  --color-bg-deep: #0a0b0d;
+  --color-surface-card: #14161d;
+  --color-text-pure: #ffffff;
+  --color-text-muted: #a0a5b5;
+  --color-brand-volt: #ccff00;
+  --color-brand-volt-hover: #b5e600;
+  --color-focus-ring: #00b0ff;
+
+  /* Layout Micro-Metrics */
+  --max-width-custom: 1400px;
+}
+
+@layer utilities {
+  /* Hardware Promotion & GPU Compositor Thread Target Layer */
+  .will-composite {
+    will-change: transform, background-color, border-color, opacity;
+    transform: translateZ(0);
+  }
+
+  /* Zero-Jitter Elastic Spring Matrix (Exact Mirror of the Provided CSS3 Physics) */
+  .transition-elastic-spring {
+    transition:
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1.4),
+      background-color 0.2s ease-out,
+      border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+}
