@@ -6,14 +6,14 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     watch: {
-      usePolling: true, // WSL 2 لائیو ٹریکنگ فکس
+      usePolling: true, // WSL2 Live File Tracking Fix Active
     },
   },
   build: {
     rollupOptions: {
       input: {
-        main: './index.html',
-        ai: './ai.html', // یہ وائٹ کو ڈائریکٹ بتاتا ہے کہ یہ فائل بھی مین فولڈر میں ہے
+        /* FIXED: Realigned path string to flat asset registry to secure seamless Vercel ingestion */
+        main: 'index.html',
       },
     },
   },
