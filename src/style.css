@@ -19,9 +19,10 @@
 }
 
 @layer utilities {
-  /* Hardware Promotion & GPU Compositor Thread Target Layer */
+  /* FIXED: Hardware Promotion & GPU Compositor Thread Target Layer */
+  /* Completely eliminated background-color and border-color from will-change to stop heavy VRAM leaks on mobile webviews */
   .will-composite {
-    will-change: transform, background-color, border-color, opacity;
+    will-change: transform, opacity;
     transform: translateZ(0);
   }
 
