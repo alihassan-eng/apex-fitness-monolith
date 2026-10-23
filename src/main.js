@@ -68,3 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = false;
     });
 });
+// 🪐 ACCORDION INTERACTION DESELECTOR LOGIC (REACTIVE COMPUTE)
+const faqTriggers = document.querySelectorAll('.faq-trigger');
+
+faqTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const content = document.getElementById(trigger.getAttribute('aria-controls'));
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        
+        faqTriggers.forEach(otherTrigger => {
+            if (otherTrigger !== trigger) {
+                otherTrigger.setAttribute('aria-expanded', 'false');
+                const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+                otherContent.style.maxHeight = null;
+                otherContent.classList.remove('active');
+            }
+        });
+
+        if (isExpanded) {
+            trigger.setAttribute('aria-expanded', 'false');
+            content.style.maxHeight = null;
+            content.classList.remove('active');
+        } else {
+            trigger.setAttribute('aria-expanded', 'true');
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.classList.add('active');
+        }
+    });
+});
