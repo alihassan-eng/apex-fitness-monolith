@@ -34,3 +34,22 @@
       border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   }
 }
+/* 🔮 HIGH-VELOCITY GPU COMPOSITOR ANIMATION MATRIX */
+@keyframes whatsapp-physics-bounce {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-6px) translateZ(0); 
+  }
+}
+
+#whatsapp-float {
+  animation: whatsapp-physics-bounce 1.4s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+#whatsapp-float:hover {
+  animation-play-state: paused;
+}
