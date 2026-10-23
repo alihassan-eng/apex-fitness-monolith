@@ -41,7 +41,7 @@
     transform: translateY(0) translateZ(0);
   }
   50% {
-    transform: translateY(-6px) translateZ(0); 
+    transform: translateY(-6px) translateZ(0);
   }
 }
 
@@ -52,4 +52,13 @@
 
 #whatsapp-float:hover {
   animation-play-state: paused;
+}
+/* 🔮 ENTERPRISE COMPOSITOR ACCORDION TRANSITIONS */
+.faq-content {
+  will-change: max-height, opacity;
+  transform: translateZ(0);
+}
+
+.faq-content.active {
+  opacity: 1;
 }
