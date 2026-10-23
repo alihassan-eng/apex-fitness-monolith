@@ -96,3 +96,56 @@ faqTriggers.forEach(trigger => {
         }
     });
 });
+// ========================================================
+// 🪐 ENTERPRISE HARDWARE TELEMETRY & RUNTIME MONITOR
+// ========================================================
+
+// 1. ⚡ GPU-Optimized Scroll Progress Engine
+window.addEventListener("scroll", () => {
+    const scrollBar = document.getElementById("scroll-bar");
+    if (!scrollBar) return;
+    
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    
+    scrollBar.style.width = scrolled + "%";
+});
+
+// 2. 📊 Client-Side Realtime FPS Diagnostic Loop
+let lastCalledTime;
+let fps;
+
+function calcFps() {
+    if (!lastCalledTime) {
+        lastCalledTime = performance.now();
+        requestAnimationFrame(calcFps);
+        return;
+    }
+    const delta = (performance.now() - lastCalledTime) / 1000;
+    lastCalledTime = performance.now();
+    fps = Math.round(1 / delta);
+    
+    const fpsVal = document.getElementById("fps-val");
+    if (fpsVal) fpsVal.innerText = fps > 60 ? 60 : fps; // 60Hz/120Hz اسکرین لاکنگ
+    requestAnimationFrame(calcFps);
+}
+requestAnimationFrame(calcFps);
+
+// 3. 🌓 V8 LocalStorage Theme Resiliency Lock
+const themeToggle = document.getElementById("theme-toggle");
+if (themeToggle) {
+    const currentTheme = localStorage.getItem("apex-theme");
+    if (currentTheme === "light") {
+        document.body.classList.add("light-theme");
+    }
+
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        let theme = "dark";
+        if (document.body.classList.contains("light-theme")) {
+            theme = "light";
+        }
+        localStorage.setItem("apex-theme", theme);
+    });
+}
