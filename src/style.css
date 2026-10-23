@@ -53,3 +53,12 @@
 #whatsapp-float:hover {
   animation-play-state: paused;
 }
+/* 🔮 ENTERPRISE COMPOSITOR ACCORDION TRANSITIONS */
+.faq-content {
+  will-change: max-height, opacity;
+  transform: translateZ(0);
+}
+
+.faq-content.active {
+  opacity: 1;
+}
