@@ -62,3 +62,61 @@
 .faq-content.active {
   opacity: 1;
 }
+/* 🔮 DESIGN SYSTEM VARIABLE MATRIX */
+:root {
+  --bg-monolith: #0a0b0d;
+  --bg-header: rgba(10, 11, 13, 0.85);
+  --text-pure: #ffffff;
+  --text-muted: #8c8c8e;
+  --surface-card: #141517;
+}
+
+/* 🔮 ENTERPRISE DESIGN SYSTEMS VARIABLE MATRIX */
+:root {
+  --bg-monolith: #0a0b0d;         
+  --bg-header: rgba(10, 11, 13, 0.85);
+  --text-pure: #ffffff;           
+  --text-muted: #a0a5ab;          
+  --surface-card: #141517;        
+  --border-glow: rgba(255, 255, 255, 0.05);
+}
+
+/* 🌓 UPGRADED: 55% REBALANCED CHARCOAL SMOKE INVERSION LAYER */
+body.light-execution-path {
+  --bg-monolith: #4a4d53;         
+  --bg-header: rgba(74, 77, 83, 0.85);
+  --text-pure: #ffffff;           
+  --text-muted: #d1d5db;          
+  --surface-card: #2b2d31;        
+  --border-glow: rgba(255, 255, 255, 0.08);
+}
+
+/* 🖥️ GLOBAL HARDWARE LAYOUT OVERRIDE */
+body {
+  background-color: var(--bg-monolith) !important;
+  color: var(--text-pure) !important;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header, #mobile-menu, .faq-content, section {
+  background-color: var(--bg-header) !important;
+  color: var(--text-pure) !important;
+  border-color: var(--border-glow) !important;
+}
+
+.bg-surface-card {
+  background-color: var(--surface-card) !important;
+  color: var(--text-pure) !important;
+  border-color: var(--border-glow) !important;
+}
+
+p, .text-text-muted {
+  color: var(--text-muted) !important;
+  transition: color 0.25s ease;
+}
+
+input, textarea, select {
+  background-color: var(--surface-card) !important;
+  color: var(--text-pure) !important;
+  border: 1px solid var(--border-glow) !important;
+}
