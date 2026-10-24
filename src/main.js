@@ -96,3 +96,88 @@ faqTriggers.forEach(trigger => {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+   // ========================================================
+// 🪐 CIRCUIT 1: V8 LOCALSTORAGE THEME RESILIENCY SYSTEM (FIXED LOGIC)
+// ========================================================
+const themeToggle = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+
+if (themeToggle && themeIcon) {
+    const activePipeline = localStorage.getItem("apex-theme-state");
+
+    if (activePipeline === "light") {
+        document.body.classList.add("light-execution-path");
+        themeToggle.setAttribute("aria-checked", "true");
+        themeIcon.innerHTML = `
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        `;
+    } else {
+        themeIcon.innerHTML = `<path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>`;
+    }
+
+    themeToggle.addEventListener("click", () => {
+        const isLight = document.body.classList.toggle("light-execution-path");
+        
+        if (isLight) {
+            localStorage.setItem("apex-theme-state", "light");
+            themeToggle.setAttribute("aria-checked", "true");
+            themeIcon.innerHTML = `
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            `;
+            console.log("%c[THEME_SWITCH] -> Light Ingestion Path Active (Sun Icon On).", "color: #fbbf24; font-weight: bold;");
+        } else {
+            localStorage.setItem("apex-theme-state", "dark");
+            themeToggle.setAttribute("aria-checked", "false");
+            themeIcon.innerHTML = `<path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>`;
+            console.log("%c[THEME_SWITCH] -> Monolith Dark Core Engaged (Moon Icon On).", "color: #06b6d4; font-weight: bold;");
+        }
+    });
+}
+
+    // ========================================================
+    // 🍔 CIRCUIT 2: HAMBURGER LIFECYCLE & TACTILE ACCORDION
+    // ========================================================
+    const menuTrigger = document.getElementById("mobile-menu-trigger");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+    if (menuTrigger && mobileMenu) {
+        const line1 = menuTrigger.querySelector(".id-line-1");
+        const line2 = menuTrigger.querySelector(".id-line-2");
+        const line3 = menuTrigger.querySelector(".id-line-3");
+
+        const toggleMenu = () => {
+            const isExpanded = menuTrigger.getAttribute("aria-expanded") === "true";
+            if (!isExpanded) {
+                menuTrigger.setAttribute("aria-expanded", "true");
+                mobileMenu.classList.remove("hidden");
+                if (line1 && line2 && line3) {
+                    line1.style.transform = "translateY(6px) rotate(45deg)";
+                    line2.style.opacity = "0";
+                    line3.style.transform = "translateY(-6px) rotate(-45deg)";
+                }
+                setTimeout(() => {
+                    mobileMenu.classList.remove("-translate-y-2", "opacity-0");
+                    mobileMenu.classList.add("translate-y-0", "opacity-100");
+                }, 10);
+            } else {
+                menuTrigger.setAttribute("aria-expanded", "false");
+                mobileMenu.classList.remove("translate-y-0", "opacity-100");
+                mobileMenu.classList.add("-translate-y-2", "opacity-0");
+                if (line1 && line2 && line3) {
+                    line1.style.transform = "none";
+                    line2.style.opacity = "1";
+                    line3.style.transform = "none";
+                }
+                setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+            }
+        };
+        menuTrigger.addEventListener("click", toggleMenu);
+        mobileNavLinks.forEach(link => link.addEventListener("click", () => {
+            if (menuTrigger.getAttribute("aria-expanded") === "true") toggleMenu();
+        }));
+    }
+});
