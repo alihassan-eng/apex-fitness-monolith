@@ -77,72 +77,132 @@
     class="absolute top-[-100px] left-5 bg-brand-volt text-black p-4 font-bold z-100 transition-[top] duration-200 ease-out focus:top-5 outline-none">
     Skip to content
   </a>
-
-  <!-- Header Component (L8 Isolation Layer) -->
+  <!-- 🛰️ ENTERPRISE ADAPTIVE HYBRID HEADER -->
   <header
     class="will-composite sticky top-0 z-50 w-full bg-[rgba(10,11,13,0.85)] backdrop-blur-md border-b border-white/5"
     role="banner">
-    <!-- Mobile Anti-Collision Shield Breakpoints Implemented natively via v4 Utilities -->
-    <div
-      class="mx-auto flex max-w-custom flex-col sm:flex-row h-auto sm:h-20 items-center justify-between gap-4 sm:gap-6 p-4 sm:px-8">
+    <div class="mx-auto flex h-20 items-center justify-between p-4 sm:px-8 max-w-7xl">
 
-      <!-- Brand Logo Node (FIXED: Syntactically repaired whitespace utility mapping) -->
+      <!-- A. Brand Logo Node -->
       <a href="/"
-        class="text-2xl font-extrabold tracking-tighter text-text-pure select-none outline-none whitespace-nowrap"
-        aria-label="Apex Fitness Corporate Home">
-        <span class="text-brand-volt">Apex</span>Fitness
+        class="text-2xl font-extrabold tracking-tighter text-white select-none outline-none whitespace-nowrap shrink-0">
+        <span class="text-[#ccff00]">Apex</span>Fitness
       </a>
 
-      <!-- Semantic Machine-Readable Navigation Pipeline with Instant Brilliant-Volt Mobile Touch Injection -->
-      <nav class="main-navigation" role="navigation" aria-label="Primary Navigation">
-        <ul class="flex gap-6 sm:gap-10 list-none" role="list">
-
-          <!-- Home Link Node (FIXED: Semantic li enclosing architecture restored + uniform brand-volt ecosystem) -->
+      <!-- B. Desktop Navigation Pipeline -->
+      <nav class="hidden md:block main-navigation" role="navigation" aria-label="Primary Navigation">
+        <ul class="flex gap-8 list-none" role="list">
           <li role="listitem">
             <a href="#home"
-              class="will-composite relative text-sm font-medium tracking-wide text-text-muted md:hover:text-brand-volt active:text-brand-volt focus:text-brand-volt active:scale-95 transition-[colors,transform] duration-100 outline-none block py-1 group select-none"
-              aria-current="page">
+              class="will-composite relative text-sm font-medium tracking-wide text-[#8c8c8e] hover:text-[#ccff00] active:text-[#ccff00] transition-colors duration-100 outline-none block py-1 group select-none">
               Home
               <span
-                class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-volt scale-x-0 origin-right transition-transform duration-200 ease-out md:group-hover:scale-x-100 md:group-hover:origin-left active:scale-x-100 focus:scale-x-100 will-composite"></span>
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-[#ccff00] scale-x-0 origin-right transition-transform duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
             </a>
           </li>
-
-          <!-- About Link Node (FIXED: Deprecated cyan matrices decoupled, linked into native brand-volt runtime) -->
           <li role="listitem">
             <a href="#about"
-              class="will-composite relative text-sm font-medium tracking-wide text-text-muted md:hover:text-brand-volt active:text-brand-volt focus:text-brand-volt active:scale-95 transition-[colors,transform] duration-100 outline-none block py-1 group select-none">
+              class="will-composite relative text-sm font-medium tracking-wide text-[#8c8c8e] hover:text-[#ccff00] active:text-[#ccff00] transition-colors duration-100 outline-none block py-1 group select-none">
               About
               <span
-                class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-volt scale-x-0 origin-right transition-transform duration-200 ease-out md:group-hover:scale-x-100 md:group-hover:origin-left active:scale-x-100 focus:scale-x-100 will-composite"></span>
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-[#ccff00] scale-x-0 origin-right transition-transform duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
             </a>
           </li>
-
-          <!-- Goals Link Node (FIXED: Full touch alignment parity matching desktop hover matrix specs) -->
           <li role="listitem">
             <a href="#goals"
-              class="will-composite relative text-sm font-medium tracking-wide text-text-muted md:hover:text-brand-volt active:text-brand-volt focus:text-brand-volt active:scale-95 transition-[colors,transform] duration-100 outline-none block py-1 group select-none">
+              class="will-composite relative text-sm font-medium tracking-wide text-[#8c8c8e] hover:text-[#ccff00] active:text-[#ccff00] transition-colors duration-100 outline-none block py-1 group select-none">
               Goals
               <span
-                class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-volt scale-x-0 origin-right transition-transform duration-200 ease-out md:group-hover:scale-x-100 md:group-hover:origin-left active:scale-x-100 focus:scale-x-100 will-composite"></span>
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-[#ccff00] scale-x-0 origin-right transition-transform duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
             </a>
           </li>
-
+          <li role="listitem">
+            <a href="#faq"
+              class="will-composite relative text-sm font-medium tracking-wide text-[#8c8c8e] hover:text-[#ccff00] active:text-[#ccff00] transition-colors duration-100 outline-none block py-1 group select-none">
+              FAQ
+              <span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-[#ccff00] scale-x-0 origin-right transition-transform duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <!-- Conversion Psychology Target Node (CTA with Balloon-Physics Soft-Elastic Engine) -->
-      <div class="w-auto flex justify-center sm:block text-center select-none">
+      <!-- C. Control Hub: High-Contrast Layout Locking -->
+      <div class="flex items-center gap-2 sm:gap-3 select-none shrink-0">
+
+        <!-- 🌓 Theme Switcher Element (FIXED: 100% Round Ball, Zero Clipping) -->
+        <button id="theme-toggle" type="button" role="switch" aria-checked="false"
+          aria-label="Toggle structural theme execution"
+          class="will-composite flex h-10 w-10 shrink-0 items-center justify-center p-0 rounded-full border border-white/10 bg-[#141517] text-white cursor-pointer outline-none transition-all duration-200 hover:scale-105 hover:border-[#ccff00] active:scale-95 mr-1">
+          <svg id="theme-icon" class="h-5 w-5 flex-none fill-none stroke-current stroke-2 text-[#ccff00]"
+            viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41">
+            </path>
+          </svg>
+        </button>
+
+        <!-- 🎈 Original Balloon-Physics Elastic CTA Button -->
         <a href="#join"
-          class="will-composite w-fit bg-brand-volt hover:bg-brand-volt-hover text-black text-sm font-bold px-6 py-2.5 sm:py-3 rounded-lg text-center outline-none inline-block cursor-pointer transition-transform duration-[600ms] ease-[cubic-bezier(0.25,1.35,0.45,1.05)] hover:[transform:scale3d(1.08,1.08,1)] active:[transform:scale3d(0.92,0.92,1)] active:duration-[150ms] active:ease-out"
+          class="will-composite w-fit shrink-0 bg-[#ccff00] hover:bg-[#b5e600] text-black text-xs sm:text-sm font-bold px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg text-center outline-none inline-block cursor-pointer transition-transform duration-[600ms] ease-[cubic-bezier(0.25,1.35,0.45,1.05)] hover:[transform:scale3d(1.06,1.08,1)] active:[transform:scale3d(0.93,0.93,1)] active:duration-[150ms] active:ease-out"
           role="button" aria-label="Join Apex Fitness Now">
           Join Now
         </a>
+
+        <!-- 🍔 Hamburger Button Trigger Node -->
+        <button id="mobile-menu-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu"
+          aria-label="Toggle navigation matrix"
+          class="will-composite flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-lg border border-white/10 bg-[#141517] text-white cursor-pointer md:hidden outline-none gap-[4px] p-0 select-none transition-all duration-150 hover:border-[#ccff00]/50 active:scale-90 active:bg-[#ccff00]/20 active:border-[#ccff00]">
+          <span class="block w-5 h-[2px] bg-white transition-all duration-300 origin-center id-line-1"></span>
+          <span class="block w-5 h-[2px] bg-white transition-all duration-200 id-line-2"></span>
+          <span class="block w-5 h-[2px] bg-white transition-all duration-300 origin-center id-line-3"></span>
+        </button>
+
       </div>
-
     </div>
-  </header>
 
+    <!-- 📱 Mobile Sliding Menu Drawer (UPGRADED: ACTIVE TACTILE COHESION LAYER) -->
+    <div id="mobile-menu"
+      class="hidden absolute top-20 left-0 w-full bg-[var(--bg-monolith)] border-b border-white/5 px-4 py-6 md:hidden transition-all duration-300 transform -translate-y-2 opacity-0 z-40 shadow-2xl">
+      <ul class="flex flex-col gap-2 list-none p-0 m-0" role="list">
+
+        <li>
+          <a href="#home" class="mobile-nav-link block text-base font-bold text-[var(--text-pure)] px-5 py-3.5 rounded-xl select-none outline-none transition-all duration-100 ease-out
+                             active:scale-[0.98] active:bg-[#ccff00] active:text-black active:shadow-[0_0_30px_rgba(204,255,0,0.2)]
+                             focus:bg-[#ccff00] focus:text-black">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="#about" class="mobile-nav-link block text-base font-bold text-[var(--text-pure)] px-5 py-3.5 rounded-xl select-none outline-none transition-all duration-100 ease-out
+                              active:scale-[0.98] active:bg-[#ccff00] active:text-black active:shadow-[0_0_30px_rgba(204,255,0,0.2)]
+                              focus:bg-[#ccff00] focus:text-black">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a href="#goals" class="mobile-nav-link block text-base font-bold text-[var(--text-pure)] px-5 py-3.5 rounded-xl select-none outline-none transition-all duration-100 ease-out
+                              active:scale-[0.98] active:bg-[#ccff00] active:text-black active:shadow-[0_0_30px_rgba(204,255,0,0.2)]
+                              focus:bg-[#ccff00] focus:text-black">
+            Goals
+          </a>
+        </li>
+
+        <li>
+          <a href="#faq" class="mobile-nav-link block text-base font-bold text-[var(--text-pure)] px-5 py-3.5 rounded-xl select-none outline-none transition-all duration-100 ease-out
+                            active:scale-[0.98] active:bg-[#ccff00] active:text-black active:shadow-[0_0_30px_rgba(204,255,0,0.2)]
+                            focus:bg-[#ccff00] focus:text-black">
+            FAQ
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </header>
   <!-- Execution Root Boundary Start -->
   <main id="main-content" class="flex-grow outline-none" role="main" tabindex="-1">
     <!-- Location: index.html - High-Impact Mobile-Calibrated Hero Core -->
