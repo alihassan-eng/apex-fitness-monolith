@@ -195,6 +195,20 @@ const hintBox = document.getElementById("hint-box");
 // 🪐 1. ENTERPRISE GLOBAL KNOWLEDGE BASE SCRIPT (The Large Context Document)
 // 📢 علی بھائی! اس سکرپٹ بلاک میں آپ جتنا بڑا چاہیں ڈیٹا ڈال سکتے ہیں، بوٹ اسی میں سے کنسپچول میچنگ کرے گا
 const aiKnowledgeScript = {
+        // ========================================================
+    // 🧠 FIXED BASIC INGESTION VALVE (100% ERROR-FREE GRAMMAR)
+    // ========================================================
+    basic: {
+        keywords: [
+            "hi", "hy", "what", "what's", "what's up", "hello", "hey", 
+            "how are you", "how is it going", "how's it going", "how do you do", 
+            "howdy", "greetings", "salutations", "good day", "good morning", 
+            "good afternoon", "good evening"
+        ],
+        // 🎯 الیٹ کارپوریٹ رسپانس: سلام کا پریمیم جواب جو کسٹمر کو برانڈ سگنل دے گا
+        response: "Hello! Welcome to the Apex Inbound Hub. How can I optimize your performance architecture today? Select one of our diagnostic hints below to audit your system."
+    },
+
     // سرور بل اور کاسٹ آپٹیمائزیشن ڈیٹا ٹوکنز
     serverless: {
         keywords: ["bill", "cost", "serverless", "pricing", "expensive", "money", "cloud"],
