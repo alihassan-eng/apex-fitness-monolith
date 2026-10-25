@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 // ========================================================
-// ✨ CIRCUIT 4: HIGH-VELOCITY DYNAMIC AI INGESTION ENGINE (INITIAL HINTS FIXED)
+// ✨ CIRCUIT 4: HIGH-VELOCITY DYNAMIC AI INGESTION ENGINE (INTELLIGENT PARSER)
 // ========================================================
 const aiTrigger = document.getElementById("ai-trigger");
 const aiWindow = document.getElementById("ai-window");
@@ -192,31 +192,42 @@ const aiSend = document.getElementById("ai-send");
 const aiFeed = document.getElementById("ai-feed");
 const hintBox = document.getElementById("hint-box");
 
-// 🧠 100% Deterministic Knowledge Matrix Base (20 Open Slots)
-const aiBrain = {
-    "hi": "Hello! Welcome to the Apex Inbound Hub. How can I optimize your performance architecture today?",
-    "hello": "Hello! Welcome to the Apex Inbound Hub. How can I optimize your performance architecture today?",
-    "how are you?": "System diagnostics report 100% operational capacity. Low-level V8 execution threads are flatlined at 0ms. Ready to assist!",
-    "deploy gpu?": "By injecting translateZ(0) inside our style sheets, we bypass CPU layout thrashing and promote layers directly onto the GPU Compositor thread, locking smooth scroll to 120Hz.",
-    "serverless bill?": "Traditional systems block thread loops with database operations. Apex Fitness isolates network pipelines inside client RAM, slashing compute cost by 50%.",
-    "core web vitals": "Our Core Web Vitals are locked at 100/100. The engine monitors pageshow events to execute automatic memory flushes, eliminating caching bloat.",
-    "what is apex fitness?": "Apex Fitness is an ultra-premium, high-velocity monolithic platform engineered using low-level Next.js and serverless cloud matrices to eliminate layout delays.",
-    "join protocols?": "Select the 'Join Now' soft-elastic button in the global header network to sync your training parameters with our production monolith layer.",
-    "default": "Query verified by the Gemini Sparkle Matrix. High-velocity data pipelines show 0ms friction across all integration endpoints."
+// 🪐 1. ENTERPRISE GLOBAL KNOWLEDGE BASE SCRIPT (The Large Context Document)
+// 📢 علی بھائی! اس سکرپٹ بلاک میں آپ جتنا بڑا چاہیں ڈیٹا ڈال سکتے ہیں، بوٹ اسی میں سے کنسپچول میچنگ کرے گا
+const aiKnowledgeScript = {
+    // سرور بل اور کاسٹ آپٹیمائزیشن ڈیٹا ٹوکنز
+    serverless: {
+        keywords: ["bill", "cost", "serverless", "pricing", "expensive", "money", "cloud"],
+        response: "Traditional architectures trigger extreme cloud compute overheads. Apex Fitness isolates non-blocking ingestion matrices directly within client RAM, crashing serverless execution invocation bills structurally by 50%."
+    },
+    // ہارڈ ویئر اور جی پی یو رینڈرنگ ڈیٹا ٹوکنز
+    gpu: {
+        keywords: ["gpu", "hardware", "fps", "performance", "smooth", "scroll", "lag", "speed"],
+        response: "By promotions inside our stylesheet with translateZ(0), we structurally bypass the CPU main thread. The layout pipeline forces rendering execution directly onto the hardware GPU Compositor, locking cell updates at 120Hz muren speed with zero battery lag."
+    },
+    // کور ویب وائٹلز اور میموری ہائجین ڈیٹا ٹوکنز
+    vitals: {
+        keywords: ["vitals", "seo", "google", "speed score", "optimization", "bfcache", "memory"],
+        response: "Our Core Web Vitals score is structurally guaranteed at 100/100. The engine intercepts browser pageshow signals to execute an atomic flush of the V8 cache registers, completely preventing client memory leakage during navigation paths."
+    },
+    // برانڈ اور پلیٹ فارم شناختی ڈیٹا ٹوکنز
+    brand: {
+        keywords: ["what is", "apex fitness", "monolith", "architecture", "this site", "platform"],
+        response: "Apex Fitness Monolith is an ultra-premium, high-velocity corporate ecosystem built over clean custom Vite and Tailwind v4 compilation pipelines, engineered for high-end portfolio demonstration and resource caching."
+    },
+    // رجسٹریشن اور جوائننگ ڈیٹا ٹوکنز
+    join: {
+        keywords: ["join", "register", "start", "button", "protocols", "cta", "signup"],
+        response: "To sync your operational metrics with our elite serverless layer, activate the 'Join Now' soft-elastic balloon button located in the global navigation header."
+    }
 };
 
-// 🎯 Google Gemini Match Hint Rotation Map
 const hintSuggestions = {
-    "hi": ["Deploy GPU?", "Serverless Bill?"],
-    "hello": ["Deploy GPU?", "Serverless Bill?"],
-    "deploy gpu?": ["Core Web Vitals", "What is Apex Fitness?"],
-    "serverless bill?": ["Join Protocols?", "FAQ Matrix"],
     "default": ["Deploy GPU?", "Serverless Bill?", "Core Web Vitals"]
 };
 
 if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) {
     
-    // 🔓 کلاؤڈ مینیجر سلائیڈر والو
     const toggleAiWindow = () => {
         const isActive = aiWindow.classList.contains("ai-active");
         if (!isActive) {
@@ -231,18 +242,15 @@ if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) 
     aiTrigger.addEventListener("click", toggleAiWindow);
     aiClose.addEventListener("click", toggleAiWindow);
 
-    // 🎯 FIXED MASTERSTROKE (STAGE 1): ہنٹ بٹنز پر کلک کا تالا لگانے کا مرکزی سیکیور والو
     const bindHintEvents = () => {
         document.querySelectorAll(".ai-hint").forEach(btn => {
-            // پرانے ایونٹس کو فلی فلش آؤٹ کر کے نیا تازہ کلک ہینڈ شیک جوڑنا
             btn.onclick = null; 
             btn.onclick = () => processUserQuery(btn.innerText);
         });
     };
 
-    // ڈائنامک ہنٹس روٹیٹر مائیکرو ٹاسک
-    const updateHints = (queryKey) => {
-        const hints = hintSuggestions[queryKey] || hintSuggestions["default"];
+    const updateHints = () => {
+        const hints = hintSuggestions["default"];
         hintBox.innerHTML = "";
         hints.forEach(hintText => {
             hintBox.innerHTML += `
@@ -251,43 +259,55 @@ if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) 
                 </button>
             `;
         });
-        // نئے بنے ہوئے بٹنز پر فوراً کلک ایونٹ ایکٹیو کرنا
         setTimeout(() => { bindHintEvents(); }, 5);
     };
 
-    // میسج انجیشن اور لائیو آٹو اسکرول پائپ لائن
+    // 🎯 2. ADVANCED CONCEPTUAL TOKEN EXTRACTOR ENGINE
+    // یہ جاوا اسکرپٹ کا وہ جادوئی الورتھم ہے جو صارف کے پورے جملے میں سے کنسپچول ورڈز میچ کرے گا
+    const resolveConceptualBrain = (rawQuery) => {
+        const queryTokens = rawQuery.toLowerCase().trim();
+        
+        // پورٹ فولیو کا سچا ہینڈ شیک رول
+        for (const scope in aiKnowledgeScript) {
+            const matchFound = aiKnowledgeScript[scope].keywords.some(keyword => queryTokens.includes(keyword));
+            if (matchFound) {
+                return aiKnowledgeScript[scope].response;
+            }
+        }
+        
+        // 🔒 3. FIXED: واٹس ایپ ری ڈائریکشن گائیڈنس والو (سلیکن ویلی بزنس ہیک)
+        // اگر بوٹ صارف کا کوئی مشکل سوال نہ سمجھ سکے، تو یہ الیٹ انگلش گائیڈنس فائر ہوگی
+        return "I can verify your operational trace query inside our current matrix context. However, for deep diagnostic engineering parameters, **please activate the official floating WhatsApp gateway below** to connect directly with the system owner.";
+    };
+
     const processUserQuery = (userText) => {
         const cleanInputText = userText.trim();
         if (!cleanInputText) return;
 
-        // یوزر ببل رینڈر کرنا
         aiFeed.innerHTML += `
             <div class="bg-[#ccff00]/10 text-white p-3.5 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-left border border-[#ccff00]/20 leading-relaxed shadow-sm">
                 ${cleanInputText}
             </div>
         `;
         
-        const lastInput = cleanInputText.toLowerCase();
         aiInput.value = ""; 
         aiFeed.scrollTop = aiFeed.scrollHeight;
 
-        // processing telemetry block
         const typingId = "ai-type-" + Date.now();
         aiFeed.innerHTML += `
             <div id="${typingId}" class="bg-neutral-900/50 text-[#ccff00] p-3 rounded-2xl rounded-tl-none max-w-[65%] border border-white/5 font-mono animate-pulse tracking-widest text-[10px] font-black">
-                ✨ CORE PROCESSING...
+                ✨ CONTEXT PARSING...
             </div>
         `;
         aiFeed.scrollTop = aiFeed.scrollHeight;
 
-        // Resolving the microtask network thread
         setTimeout(() => {
             const typingNode = document.getElementById(typingId);
             if (typingNode) typingNode.remove();
 
-            const aiResponse = aiBrain[lastInput] || aiBrain["default"];
+            // سائنسی لوپ کے ذریعے کنسپچول جواب نچوڑنا
+            const aiResponse = resolveConceptualBrain(cleanInputText);
 
-            // Append Agent Answer safely
             aiFeed.innerHTML += `
                 <div class="bg-neutral-900/80 text-[#d1d5db] p-3.5 rounded-2xl rounded-tl-none max-w-[85%] border border-white/5 leading-relaxed shadow-sm">
                     ${aiResponse}
@@ -295,14 +315,12 @@ if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) 
             `;
             
             aiFeed.scrollTop = aiFeed.scrollHeight;
-            updateHints(lastInput);
+            updateHints();
             aiInput.focus();
-        }, 500);
+        }, 650);
     };
 
-    // ایونٹ لسٹینر کی مرکزی بائنڈز
     aiSend.onclick = () => processUserQuery(aiInput.value);
-    
     aiInput.onkeydown = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -310,6 +328,5 @@ if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) 
         }
     };
 
-    // 🎯 FIXED MASTERSTROKE (STAGE 2): پہلی بار پیج لوڈ ہوتے ہی ریم (RAM) میں ابتدائی بٹنز کو فوری لائیو فائر ریڈی کرنا!
     bindHintEvents();
 }
