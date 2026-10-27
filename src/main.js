@@ -242,16 +242,31 @@ const hintSuggestions = {
 
 if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) {
     
-    const toggleAiWindow = () => {
-        const isActive = aiWindow.classList.contains("ai-active");
-        if (!isActive) {
-            aiWindow.classList.remove("hidden");
-            setTimeout(() => { aiWindow.classList.add("ai-active"); }, 10);
-        } else {
-            aiWindow.classList.remove("ai-active");
-            setTimeout(() => { aiWindow.classList.add("hidden"); }, 300);
-        }
-    };
+   // ========================================================
+// ✨ CIRCUIT 4.1: LIVE INTERACTIVE TOGGLE GOVERNOR
+// ========================================================
+const toggleAiWindow = () => {
+    const isActive = aiWindow.classList.contains("ai-active");
+    
+    if (!isActive) {
+        // 🟢 ونڈو بیدار: کرنٹ اور پوزیشن فلی لائیو آن
+        aiWindow.style.display = "flex"; 
+        aiWindow.style.pointerEvents = "auto";
+        aiWindow.classList.remove("hidden");
+        setTimeout(() => { 
+            aiWindow.classList.add("ai-active"); 
+        }, 10);
+    } else {
+        // ❌ ونڈو بند: وجود اور ٹچ 0ms پر جڑ سے غائب
+        aiWindow.classList.remove("ai-active");
+        aiWindow.style.pointerEvents = "none";
+        setTimeout(() => { 
+            aiWindow.classList.add("hidden");
+            aiWindow.style.display = "none"; // لے آؤٹ کولیژن جڑ سے کچل دیا گیا!
+        }, 300);
+    }
+};
+
 
     aiTrigger.addEventListener("click", toggleAiWindow);
     aiClose.addEventListener("click", toggleAiWindow);
@@ -343,4 +358,30 @@ if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) 
     };
 
     bindHintEvents();
+}
+// ========================================================
+// ⚡ CIRCUIT 5: CORE EXECUTION SYNC VALVE (THE MAIN THREAD UNLOCK)
+// ========================================================
+const initializeAbsoluteCore = () => {
+    // پیج لوڈ ہوتے ہی زبردستی اے آئی ونڈو کو پوشیدہ موڈ پر منجمد کرنا
+    if (aiWindow) {
+        aiWindow.classList.add("hidden");
+        aiWindow.classList.remove("ai-active");
+        aiWindow.style.pointerEvents = "none";
+        aiWindow.style.display = "none";
+    }
+    
+    // بائنڈ ہنٹس کا کرنٹ فلی لائیو آن کرنا
+    if (typeof updateHints === "function") {
+        updateHints();
+    }
+    
+    console.log("🛰️ Core execution main thread unlocked with 100% current flow!");
+};
+
+// 🛡️ براؤزر کے ایونٹ لوپ کو مجبور کرنا کہ وہ پہلے پیج کا کرنٹ بحال کرے بعد میں بوٹ لوڈ کرے
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeAbsoluteCore);
+} else {
+    initializeAbsoluteCore();
 }
