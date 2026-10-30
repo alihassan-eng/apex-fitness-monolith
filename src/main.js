@@ -23,34 +23,130 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================================================
     // PIPELINE A: INSTANT SERVERLESS INGESTION & CAPTURE LOOP
     // ========================================================
-    form.addEventListener("submit", async (event) => {
-        // Enforcing absolute intercept: Freezing default browser navigation pipeline
-        event.preventDefault();
+       // ========================================================
+    // 🪐 SECTION 1: HARDENED SERVERLESS INGESTION & LOCALSTORAGE INVARIANT FIREWALL
+    // ========================================================
+    // 🧬 CONFIGURATION MATRIX: یہاں آپ مینوئلی اپنے پلان کی لمٹ (50 یا 200) ہارڈ لاک کر سکتے ہیں
+    const PRODUCTION_SUBMISSION_CAP = 50; 
 
-        // Instant UX Projection: Triggering memory-allocated modal frames immediately
-        modal.classList.remove("opacity-0", "pointer-events-none");
-        modalContent.classList.remove("scale-95");
-        modalContent.classList.add("scale-100");
+    if (form && submitBtn && modal && modalContent && closeModalBtn) {
+        
+        // 🛰️ براؤزر کے مستقل کیشے رجسٹر سے لائیو گنتی ریڈ کرنا
+        let currentMonthInboundCount = parseInt(localStorage.getItem("apex-lead-count-v5")) || 0;
 
-        // Disabling action trigger to eliminate double-submission layout thrashing
-        submitBtn.disabled = true;
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault(); // Freezing default browser navigation pipeline
 
-        // Parsing active input memory fields into a structured binary payload stream
-        const formData = new FormData(form);
+            // 🛡️ SECURITY SHIELD: اگر ۵۰ کا کوٹہ پورا ہو چکا ہے، تو کلاؤڈ نیٹ ورک پر ہٹ مارنے سے پہلے ہی گیٹ فلی لاک!
+            if (currentMonthInboundCount >= PRODUCTION_SUBMISSION_CAP) {
+                modal.classList.remove("opacity-0", "pointer-events-none");
+                modalContent.innerHTML = `
+                    <div class="text-center p-6 space-y-4 font-sans select-none">
+                        <div class="h-12 w-12 rounded-full bg-red-500/10 text-red-500 text-xl flex items-center justify-center mx-auto border border-red-500/20 font-black animate-bounce">⚠️</div>
+                        <h3 class="text-sm font-black text-red-500 uppercase tracking-widest font-mono">Monthly Cap Exhausted</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            The core infrastructure has reached its authoritative operational limits (<span class="text-red-400 font-mono">${currentMonthInboundCount}/${PRODUCTION_SUBMISSION_CAP} Submissions</span>). Formspree dynamic ingestion is temporarily frozen.
+                        </p>
+                        <button id="modal-quota-close" class="bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Close Vault</button>
+                    </div>
+                `;
+                document.getElementById("modal-quota-close").onclick = () => {
+                    modal.classList.add("opacity-0", "pointer-events-none");
+                    submitBtn.disabled = false;
+                };
+                return;
+            }
 
-        try {
-            // Under the hood: Non-blocking asynchronous network execution sequence
-            // Note: The 'await' operator is decoupled to maintain zero-latency interface feedback
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-        } catch (error) {
-            // Silently routing structural faults to background telemetry sync
-            console.log("Background Sync Active");
-        }
-    });
+            // 🔄 STAGE 1: PENDING STATE ACTIVATED (سینڈ ہو رہا ہے اسٹیٹ)
+            submitBtn.disabled = true;
+            modal.classList.remove("opacity-0", "pointer-events-none");
+            modalContent.classList.remove("scale-100");
+            modalContent.classList.add("scale-95");
+
+            modalContent.innerHTML = `
+                <div class="text-center p-8 space-y-4 font-sans select-none">
+                    <div class="h-8 w-8 border-2 border-t-[#ccff00] border-white/10 rounded-full animate-spin mx-auto"></div>
+                    <h3 class="text-[10px] font-black tracking-[0.2em] uppercase text-white font-mono animate-pulse">✨ Ingesting Data to Cloud Middleware...</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Routing parameters safely to Formspree core engine.</p>
+                </div>
+            `;
+            setTimeout(() => modalContent.classList.add("scale-100"), 10);
+
+            const formData = new FormData(form);
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6500); 
+
+            try {
+                // 🛰️ UNDER THE HOOD: LIVE NON-BLOCKING NETWORK INGESTION FLOW
+                const cloudResponse = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: { 'Accept': 'application/json' },
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                let serverPayload = {};
+                try {
+                    serverPayload = await cloudResponse.json();
+                } catch (e) {
+                    serverPayload = { success: cloudResponse.ok };
+                }
+
+                // 🎯 CONDITION 1: اگر فارم اسپرے کا سرور بولے کہ کامیابی ہو گئی (اور ڈیٹا ای میل میں جا رہا ہو)
+                if (cloudResponse.ok && (serverPayload.success === true || !serverPayload.errors)) {
+                    
+                    // 🔓 لوکل رجسٹرڈ گنتی کو ریم کے اندر ایک پلس پش کرنا
+                    currentMonthInboundCount++;
+                    localStorage.setItem("apex-lead-count-v5", currentMonthInboundCount);
+
+                    modalContent.innerHTML = `
+                        <div class="text-center p-6 space-y-4 font-sans select-none">
+                            <div class="h-12 w-12 rounded-full bg-[#ccff00]/10 text-[#ccff00] text-xl flex items-center justify-center mx-auto border border-[#ccff00]/20 font-black animate-pulse">✓</div>
+                            <h3 class="text-base font-black text-[#ccff00] uppercase tracking-widest font-mono">Protocol Deployed Safely</h3>
+                            <p class="text-xs text-neutral-300 leading-relaxed">
+                                Formspree token synced. Operational metrics allocated at <span class="text-[#ccff00] font-mono">${currentMonthInboundCount}/${PRODUCTION_SUBMISSION_CAP}</span> slots. Your lead data has been logged to the central store.
+                            </p>
+                            <button id="modal-success-close" class="bg-[#ccff00] text-black font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Acknowledge</button>
+                        </div>
+                    `;
+                    
+                    document.getElementById("modal-success-close").onclick = () => {
+                        modal.classList.add("opacity-0", "pointer-events-none");
+                        form.reset(); // کامیابی پر فارم کو فلی کلیئر کرنا
+                        submitBtn.disabled = false;
+                    };
+                    return;
+                }
+
+                // 🎯 CONDITION 2: اگر سرور سائیڈ سے کوئی ہارڈ بلاک آئے
+                throw new Error("Generic Ingestion Rejection");
+
+            } catch (error) {
+                // ✕ STAGE 4: FAILURE OR UNCERTAIN TIMEOUT VALVE RECOVERY (سرخ کراس)
+                const isTimeout = error.name === "AbortError";
+                const errorTitle = isTimeout ? "Uncertain Timeout Boundary" : "Payload Transmission Fault";
+                const errorDesc = isTimeout 
+                    ? "The edge gateway failed to return an authoritative handshake within 6.5s. Payload status remains uncertain inside cloud pipelines."
+                    : "The ingestion endpoint rejected the matrix configuration structure. V8 register dump completed safely.";
+
+                modalContent.innerHTML = `
+                    <div class="text-center p-6 space-y-4 font-sans select-none">
+                        <div class="h-12 w-12 rounded-full bg-red-500/10 text-red-500 text-base flex items-center justify-center mx-auto border border-red-500/20 font-black">✕</div>
+                        <h3 class="text-sm font-black text-red-500 uppercase tracking-widest font-mono">${errorTitle}</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">${errorDesc}</p>
+                        <button id="modal-fault-retry" class="bg-white text-black font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Reset Ingestion Gate</button>
+                    </div>
+                `;
+
+                document.getElementById("modal-fault-retry").onclick = () => {
+                    modal.classList.add("opacity-0", "pointer-events-none");
+                    submitBtn.disabled = false;
+                };
+            }
+        });
+    }
 
     // ========================================================
     // PIPELINE B: MODAL CLOSURE & PHYSICAL MEMORY DEALLOCATION
