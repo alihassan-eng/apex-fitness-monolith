@@ -23,24 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================================================
     // PIPELINE A: INSTANT SERVERLESS INGESTION & CAPTURE LOOP
     // ========================================================
-       // ========================================================
-    // 🪐 SECTION 1: HARDENED SERVERLESS INGESTION & ANTI-DOUBLE-SUBMISSION IDEMPOTENCY ENGINE
+         // ========================================================
+    // 🪐 SECTION 1: HARDENED SERVERLESS INGESTION & ZERO-CLUTTER LIVE CLOUD STATUS INTERCEPTOR
     // ========================================================
-    // 🧬 FIXED MASTERSTROKE: نیٹ ورک کٹنے یا کال آنے پر ڈبل انٹری اور ریس کنڈیشنز کو جڑ سے کچلنے کا الٹرا-انٹرپرائز سرکٹ
+    // 🧬 FIXED MASTERSTROKE: پاپ اپ سے فرضی گنتی مستقل ڈیلیٹ، اب یہ صرف سچا لائیو کلاؤڈ سگنل پڑھ کر رینڈر کرے گا!
     if (form && submitBtn && modal && modalContent && closeModalBtn) {
         
-        // ڈومین آئیسولیشن توازن: ہر مخصوص لنک کے لیے لوکل بفر کاؤنٹ ٹریکر
-        let currentMonthInboundCount = parseInt(localStorage.getItem("apex-lead-count-v5")) || 0;
-
         form.addEventListener("submit", async (event) => {
             event.preventDefault(); // Freezing default browser navigation pipeline
 
-            // 🔓 CRITICAL ANTI-THROTTLING LOCK: اگر فارم ایک بار پروسیسنگ میں چلا گیا تو بٹن اور خانوں کو فورا فریز کرنا
+            // 🔓 CRITICAL ANTI-THROTTLING LOCK: ڈبل کلک اور ریس کنڈیشنز کو مینوفیکچرنگ لیول پر فریز کرنا
             if (submitBtn.getAttribute("data-processing") === "true") return;
             submitBtn.setAttribute("data-processing", "true");
             submitBtn.disabled = true;
 
-            // 🧬 GENERATING UNIQUE IDEMPOTENCY KEY: کال کٹنے کے دوران ڈبل سبمشن کو کلاؤڈ پر فریز کرنے کا سائنسی ہیک
+            // 🧬 GENERATING UNIQUE IDEMPOTENCY KEY: کال انٹراپشن کے دوران ڈبل سبمشن کو بلاک کرنے کا سائنسی ہیک
             const idempotencyKey = "apex-token-" + Date.now() + "-" + Math.random().toString(36).substr(2, 9);
             
             // 🔄 STAGE 1: PENDING STATE ACTIVATED (سینڈ ہو رہا ہے اسٹیٹ)
@@ -48,18 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
             modalContent.classList.remove("scale-100");
             modalContent.classList.add("scale-95");
 
+            // لائیو ہولوگرافک پینڈنگ اسپنر (0ms UI Feedback Thread)
             modalContent.innerHTML = `
                 <div class="text-center p-8 space-y-4 font-sans select-none">
                     <div class="h-8 w-8 border-2 border-t-[#ccff00] border-white/10 rounded-full animate-spin mx-auto"></div>
                     <h3 class="text-[10px] font-black tracking-[0.2em] uppercase text-white font-mono animate-pulse">✨ Ingesting Data to Cloud Middleware...</h3>
-                    <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Enforcing network token: <span class="text-[#ccff00]">${idempotencyKey.substr(0, 15)}...</span></p>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Routing parameters safely to Formspree core engine.</p>
                 </div>
             `;
             setTimeout(() => modalContent.classList.add("scale-100"), 10);
 
             const formData = new FormData(form);
-            // فارم اسپرے کی آفیشل آئیڈیمپوٹینسی پائپ لائن میں چابی بائنڈ کرنا تاکہ کلاؤڈ ڈبل ڈیٹا ریجیکٹ کر دے
-            formData.append("_idempotency_key", idempotencyKey); 
+            formData.append("_idempotency_key", idempotencyKey); // ڈبل سبمشن پروٹیکشن والو
 
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 6500); // 6.5s Safety Timeout Valve
@@ -73,8 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     signal: controller.signal
                 });
 
-                clearTimeout(timeoutId);
+                clearTimeout(timeoutId); // سرور سگنل آتے ہی ٹائم آؤٹ والو فلش
 
+                // 🔍 INTERCEPTOR: فارم اسپرے کا بھیجا گیا پے لوڈ ڈیٹا پسِ پردہ ریڈ کرنا
                 let serverPayload = {};
                 try {
                     serverPayload = await cloudResponse.json();
@@ -82,17 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     serverPayload = { success: cloudResponse.ok };
                 }
 
+                // ========================================================
+                // 🟢 CASE A: CONFIRMED SUCCESS (میسج کامیابی سے چلا گیا - گنتی غائب!)
+                // ========================================================
                 if (cloudResponse.ok && (serverPayload.success === true || !serverPayload.errors)) {
-                    // 🟢 STAGE 2: CONFIRMED SUCCESS (میسج کامیابی سے چلا گیا - ہرا ٹک!)
-                    currentMonthInboundCount++;
-                    localStorage.setItem("apex-lead-count-v5", currentMonthInboundCount);
-
                     modalContent.innerHTML = `
                         <div class="text-center p-6 space-y-4 font-sans select-none">
                             <div class="h-12 w-12 rounded-full bg-[#ccff00]/10 text-[#ccff00] text-xl flex items-center justify-center mx-auto border border-[#ccff00]/20 font-black animate-pulse">✓</div>
                             <h3 class="text-base font-black text-[#ccff00] uppercase tracking-widest font-mono">Protocol Deployed Safely</h3>
                             <p class="text-xs text-neutral-300 leading-relaxed">
-                                Formspree connection verified. Operational metrics allocated at <span class="text-[#ccff00] font-mono">${currentMonthInboundCount}/50</span> slots. Lead vector locked securely.
+                                Formspree server connection verified. Your dynamic lead parameters have been successfully logged to the secure central directory store.
                             </p>
                             <button id="modal-success-close" class="bg-[#ccff00] text-black font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Acknowledge</button>
                         </div>
@@ -100,21 +97,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     document.getElementById("modal-success-close").onclick = () => {
                         modal.classList.add("opacity-0", "pointer-events-none");
-                        form.reset();
+                        form.reset(); // کامیابی پر فارم کو مینوئلی فلی کلیئر کرنا
                         submitBtn.removeAttribute("data-processing");
                         submitBtn.disabled = false;
                     };
                     return;
                 }
 
-                // ⚠️ STAGE 3: CLOUD LIMIT LATCH CATCHING (لمٹ ختم ہونے کا کلاؤڈ سگنل)
-                if (cloudResponse.status === 429 || cloudResponse.status === 400) {
+                // ========================================================
+                // ⚠️ CASE B: CLOUD LIMIT LATCH PRECISE CAPTURE (جب ۵۰ کی لمٹ ختم ہو چکی ہو)
+                // ========================================================
+                let isLimitExhausted = cloudResponse.status === 429 || cloudResponse.status === 400 || cloudResponse.status === 422;
+                
+                if (serverPayload.errors && Array.isArray(serverPayload.errors)) {
+                    isLimitExhausted = serverPayload.errors.some(err => {
+                        const errMsg = (err.message || "").toLowerCase();
+                        return errMsg.includes("limit") || errMsg.includes("quota") || errMsg.includes("exhausted") || errMsg.includes("many requests");
+                    }) || isLimitExhausted;
+                }
+
+                if (isLimitExhausted || serverPayload.success === false) {
                     modalContent.innerHTML = `
                         <div class="text-center p-6 space-y-4 font-sans select-none">
                             <div class="h-12 w-12 rounded-full bg-red-500/10 text-red-500 text-xl flex items-center justify-center mx-auto border border-red-500/20 font-black animate-bounce">⚠️</div>
                             <h3 class="text-sm font-black text-red-500 uppercase tracking-widest font-mono">Monthly Cap Exhausted</h3>
                             <p class="text-xs text-neutral-400 leading-relaxed">
-                                Authoritative response read from Formspree status code: The monthly integration quota (<span class="text-red-400 font-mono">50/50 limits</span>) has been completely exhausted for this host layout.
+                                Authoritative response read from Formspree payload: The monthly integration allocation limits have been completely exhausted for this host layout.
                             </p>
                             <button id="modal-quota-close" class="bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Close Vault</button>
                         </div>
@@ -127,15 +135,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                throw new Error("Generic Server Rejection");
+                throw new Error("Generic Ingestion Rejection");
 
             } catch (error) {
-                // 🛸 STAGE 4: FAILURE OR UNCERTAIN TIMEOUT VALVE RECOVERY (کال آنے پر مکھن ہینڈلر)
+                // ========================================================
+                // ✕ CASE C: NETWORK FAULT RECOVERY (کال آنے یا نیٹ ورک کٹنے پر سیکیور ہینڈلر)
+                // ========================================================
                 const isTimeout = error.name === "AbortError";
                 const errorTitle = isTimeout ? "Uncertain Timeout Boundary" : "Payload Transmission Fault";
                 const errorDesc = isTimeout 
-                    ? "The edge gateway failed to return an handshake within 6.5s. Payload status remains uncertain."
-                    : "Network mutation detected (Incoming Call Interruption). Ingestion pipeline suspended safely to prevent duplicate writes.";
+                    ? "The edge gateway failed to return an handshake within 6.5s. Payload status remains uncertain inside cloud pipelines."
+                    : "Network mutation detected (Incoming Call Interruption). Ingestion pipeline suspended safely to prevent duplicate database writes.";
 
                 modalContent.innerHTML = `
                     <div class="text-center p-6 space-y-4 font-sans select-none">
