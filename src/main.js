@@ -522,45 +522,60 @@ const toggleAiWindow = () => {
         return "I can verify your operational trace query inside our current matrix context. However, for deep diagnostic engineering parameters, **please activate the official floating WhatsApp gateway below** to connect directly with the system owner.";
     };
 
-    const processUserQuery = (userText) => {
-        const cleanInputText = userText.trim();
-        if (!cleanInputText) return;
+           /**
+         * ✨ CIRCUIT 5: HIGH-VELOCITY DYNAMIC AI INGESTION ENGINE (CORE PIPELINE)
+         * 🔬 MIT CYBER-SECURITY SPEC: User input rendering locked through safe DOM APIs to crush XSS injection permanently.
+         */
+        const processUserQuery = (userText) => {
+            const cleanInputText = userText.trim();
+            if (!cleanInputText) return;
 
-        aiFeed.innerHTML += `
-            <div class="bg-[#ccff00]/10 text-white p-3.5 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-left border border-[#ccff00]/20 leading-relaxed shadow-sm">
-                ${cleanInputText}
-            </div>
-        `;
-        
-        aiInput.value = ""; 
-        aiFeed.scrollTop = aiFeed.scrollHeight;
-
-        const typingId = "ai-type-" + Date.now();
-        aiFeed.innerHTML += `
-            <div id="${typingId}" class="bg-neutral-900/50 text-[#ccff00] p-3 rounded-2xl rounded-tl-none max-w-[65%] border border-white/5 font-mono animate-pulse tracking-widest text-[10px] font-black">
-                ✨ CONTEXT PARSING...
-            </div>
-        `;
-        aiFeed.scrollTop = aiFeed.scrollHeight;
-
-        setTimeout(() => {
-            const typingNode = document.getElementById(typingId);
-            if (typingNode) typingNode.remove();
-
-            // سائنسی لوپ کے ذریعے کنسپچول جواب نچوڑنا
-            const aiResponse = resolveConceptualBrain(cleanInputText);
-
-            aiFeed.innerHTML += `
-                <div class="bg-neutral-900/80 text-[#d1d5db] p-3.5 rounded-2xl rounded-tl-none max-w-[85%] border border-white/5 leading-relaxed shadow-sm">
-                    ${aiResponse}
-                </div>
-            `;
+            // 🛡️ SECURITY SHIELD: Creating an isolated physical DOM node container instead of dangerous innerHTML
+            const userBubbleContainer = document.createElement("div");
+            userBubbleContainer.className = "bg-[#ccff00]/10 text-white p-3.5 rounded-2xl rounded-tr-none max-w-[85%] ml-auto text-left border border-[#ccff00]/20 leading-relaxed shadow-sm select-text";
             
+            // 🎯 FIXED MASTERSTROKE: textContent کے فولادی تالے سے ہیکر کا جاوا اسکرپٹ اٹیک فورا گونگا ہو کر منجمد!
+            userBubbleContainer.textContent = cleanInputText;
+            
+            // Atomic injection directly into the hardware-promoted tracking feed
+            aiFeed.appendChild(userBubbleContainer);
+            
+            aiInput.value = ""; 
             aiFeed.scrollTop = aiFeed.scrollHeight;
-            updateHints();
-            aiInput.focus();
-        }, 650);
-    };
+
+            // Simulated Telemetry State Engine Initialization (Typing Indication Node)
+            const typingId = "ai-type-" + Date.now();
+            const typingBubble = document.createElement("div");
+            typingBubble.id = typingId;
+            typingBubble.className = "bg-neutral-900/50 text-[#ccff00] p-3 rounded-2xl rounded-tl-none max-w-[65%] border border-white/5 font-mono animate-pulse tracking-widest text-[10px] font-black select-none";
+            typingBubble.textContent = "✨ CONTEXT PARSING...";
+            
+            aiFeed.appendChild(typingBubble);
+            aiFeed.scrollTop = aiFeed.scrollHeight;
+
+            // Resolving the Macro-Task Asynchronous Delay
+            setTimeout(() => {
+                const typingNode = document.getElementById(typingId);
+                if (typingNode) typingNode.remove();
+
+                // Resolving the conceptual base from the deep registry script
+                const aiResponse = resolveConceptualBrain(cleanInputText);
+
+                // Creating the authoritative bot bubble context layer
+                const botBubbleContainer = document.createElement("div");
+                botBubbleContainer.className = "bg-neutral-900/80 text-[#d1d5db] p-3.5 rounded-2xl rounded-tl-none max-w-[85%] border border-white/5 leading-relaxed shadow-sm select-text";
+                
+                // 📡 NOTE: چونکہ بوٹ کے اپنے پے لوڈ میں ہمارے محفوظ لنکس (<a href>) شامل ہیں، اسے innerHTML دیں گے کیونکہ یہ سیکیور انٹرنل ڈیٹا ہے
+                botBubbleContainer.innerHTML = aiResponse;
+
+                aiFeed.appendChild(botBubbleContainer);
+                aiFeed.scrollTop = aiFeed.scrollHeight;
+                
+                if (typeof updateHints === "function") updateHints();
+                aiInput.focus();
+            }, 650);
+        };
+
 
     aiSend.onclick = () => processUserQuery(aiInput.value);
     aiInput.onkeydown = (e) => {
