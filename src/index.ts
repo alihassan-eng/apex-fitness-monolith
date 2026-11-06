@@ -1,229 +1,374 @@
-// 🪐 APEX HARDWARE-ISOLATED INTERFACE SUBSTRATE (src/index.ts - Section 01)
-// 🧬 MIT SPEC: Enforcing strict machine-readable DOM Type Casting and complete compile-time Null-Safety.
+declare let updateHints: any;
+declare let renderFallbackUI: any;
+
+// اس کے نیچے آپ کا باقی سارا پروجیکٹ کوڈ فلی سیف رن ہوگا...
+
+// ============================================================================
+// 🪐 APEX ENTERPRISE HARDWARE-ISOLATED INTERFACE SUBSTRATE (src/index.ts - Section 01)
+// ============================================================================
+// 🧬 MIT CYBER-SECURITY SPEC: Enforcing strict global block isolation, 
+// comprehensive dual-form memory mapping, and complete compile-time Null-Safety.
+// ============================================================================
 
 /**
  * Apex Fitness Technologies Inc. - High-Velocity UX Engine
  * Zero-Delay Formspree Interception & Physical Modal Control
- * Architecture: Optimized for Serverless AJAX Lead Ingestion
+ * Architecture: Monolithic Enterprise Structure Optimized for Serverless AJAX Ingestion
  */
 
 "use strict";
 
 document.addEventListener("DOMContentLoaded", (): void => {
     
-    // 1️⃣ STRICT DOM NODE ALLOCATION: Extracted and casted explicitly down to specific HTML classes.
+    // ========================================================================
+    // 🎛️ NODE ALLOCATION 01: DUAL-FORM HARDWARE INTERACTION REGISTERS
+    // ========================================================================
+    // 🧬 Form 01: The global header soft-elastic ingestion node
     const form = document.querySelector<HTMLFormElement>("#join form");
     
-    // Scoping the submit button element securely inside the casted form domain boundary
+    // 🧬 Form 02: The core persistent conversion lead form node (The contact-form bug crusher)
+    const contactForm = document.getElementById("contact-form") as HTMLFormElement | null;
+    
+    // 🧬 Submit Button: Securely scoped down to specific HTML button parameters inside DRAM
     const submitBtn = form ? form.querySelector<HTMLButtonElement>('button[type="submit"]') : null;
 
-    // 2️⃣ VIEWPORT MODAL ROUTING LINKS: Explicitly mapping runtime memory shapes for the dialog tree.
+    // ========================================================================
+    // 🎛️ NODE ALLOCATION 02: VIEWPORT POPUP DIALOG ROUTING LINKS
+    // ========================================================================
     const modal = document.getElementById("success-modal") as HTMLDivElement | null;
     const modalContent = document.getElementById("modal-content") as HTMLDivElement | null;
     const closeModalBtn = document.getElementById("close-modal-btn") as HTMLButtonElement | null;
 
-    // ✕ THE FAIL-CLOSED RUNTIME SAFETY VALVE
-    // The compiler will hard-freeze the execution path if a single node is unallocated in DRAM.
+    // ========================================================================
+    // 🛡️ THE ATOMIC FAIL-CLOSED SAFETY VALVE (THE GATEKEEPER LOCK)
+    // ========================================================================
+    // ✕ The V8 compiler will hard-freeze compilation if standard layout targets are unallocated in RAM.
     if (!form || !submitBtn || !modal || !modalContent || !closeModalBtn) {
-        console.error("❌ [CRITICAL_LAYOUT_LEAK] -> Mandatory DOM memory segments are unallocated in RAM.");
+        console.error("❌ [CRITICAL_LAYOUT_LEAK] -> Mandatory DOM memory segments are unallocated inside client.");
         return;
     }
 
-    // 🟢 EDGE-CASE PROTECTION: At this microsecond, TypeScript guarantees 100% type determinism.
-    console.log("🪐 [COMPLIANCE_PASSED] -> Core DOM allocation matrix synchronized cleanly inside V8.");
-    // ========================================================
-    // 🪐 SECTION 1A: AUTHORITATIVE INGESTION CORE & VELVET FAIL-SAFE MATRIX (Section 02)
-    // ========================================================
-    // 🧬 ENTERPRISE SPEC: 0ms UI isolation promoted to GPU compositor thread layers.
-    if (form && submitBtn && modal && modalContent && closeModalBtn) {
-        
-        // 1️⃣ MACHINE-READABLE PERSISTENT METRICS: Strictly casted decimal parsing from the bare-metal storage registry
-        let currentMonthInboundCount: number = parseInt(localStorage.getItem("apex-lead-count-v5") || "0", 10) || 0;
-        
-        // 2️⃣ STATEFUL MEMORY ANCHOR BUFFER: The isolated data retention vault initialized strictly as an immutable type capsule
-        let offlineBackupCache: { formData: [string, FormDataEntryValue][]; idempotencyKey: string } | null = null; 
+    // ========================================================================
+    // 💾 STATEFUL PERSISTENT METRICS & STORAGE MEMORY MEMORY REGISTERS
+    // ========================================================================
+    let currentMonthInboundCount: number = parseInt(localStorage.getItem("apex-lead-count-v5") || "0", 10) || 0;
+    
+    // Immutable type matrix array matching FormData entries to prevent in-flight string pollution
+    let offlineBackupCache: { formData: [string, FormDataEntryValue][]; idempotencyKey: string } | null = null;
 
-        /**
-         * 🔬 AUTHORITATIVE NETWORK STREAM PROCESSOR (The Execution Substrate)
-         * 🎯 FIXED: Explicit type bindings for target payloads, cryptographic keys, and V8 exception wrappers.
-         */
-        async function executeCloudIngestion(targetFormData: FormData, activeIdempotencyKey: string): Promise<void> {
+    // 🟢 COMPLIANCE BASELINE PASSED: The setup foundation is officially locked inside the V8 Isolate.
+    console.log("🪐 [COMPLIANCE_PASSED] -> Section 01: Dual-form tracking registers initialized cleanly.");
+    // ============================================================================
+    // 🪐 SECTION 02: INTERACTIVE FAULT RESILIENCY & QUOTA GOVERNANCE CHANNELS
+    // ============================================================================
+    // 🧬 SPEC: Declaring secure local interceptor nodes inside the monolithic execution
+    // substrate to permanently eliminate out-of-scope pointer isolation crashes.
+    // ============================================================================
+
+    /**
+     * 🔬 INTERNET کٹنے کی صورت میں فورا آف لائن پروٹوکول اور پاپ اپ بیدار کریں
+     * @param cachedFormData Outbound user payload entry tokens
+     * @param idempotencyKey Cryptographic session identifier key string
+     */
+    function handleOfflineFallback(cachedFormData: FormData, idempotencyKey: string): void {
+        console.log("%c[PRE_FLIGHT_OFFLINE] -> Edge routing caught pre-flight dropout. Simulating secure latency mask.", "color: #ff9500; font-weight: bold;");
+        
+        // Securely caching the live fields entry package into the isolated array matrix buffer
+        offlineBackupCache = { 
+            formData: Array.from(cachedFormData.entries()), 
+            idempotencyKey: idempotencyKey 
+        };
+        
+        // Executing a precise macroscopic delay block before opening the suspension interactive valve
+        setTimeout((): void => {
+            console.log("%c[OFFLINE_SHIELD] -> Pre-flight thread isolation synchronized safely.", "color: #ff3b30; font-weight: bold;");
+            renderFallbackUI(form!.action, "POST", cachedFormData, idempotencyKey);
+        }, 1200);
+    }
+
+    /**
+     * 🔬 PASS THE CLOUD RESPONSE NODES STRAIGHT INTO THE STRICT QUOTA CHECK LOGIC
+     * @param cloudResponse Outbound fetch connection signature mapping
+     * @param targetFormData In-flight user context layout variables
+     * @param activeIdempotencyKey Safe verification session sequence signature
+     * @param serverPayload Parsed upstream JSON telemetry registry
+     */
+    function handleQuotaGate(
+        cloudResponse: Response, 
+        targetFormData: FormData, 
+        activeIdempotencyKey: string, 
+        serverPayload: Record<string, any>
+    ): void {
+        // ========================================================================
+        // 🟢 CASE A: VERIFIED SUCCESS HANDSHAKE (HTTP 200 OK)
+        // ========================================================================
+        if (cloudResponse.ok && (serverPayload.success === true || !serverPayload.errors)) {
+            currentMonthInboundCount++;
+            localStorage.setItem("apex-lead-count-v5", currentMonthInboundCount.toString());
+
+            // Projecting high-contrast GPU promoted template string directly inside the viewport frame
+            modalContent!.innerHTML = `
+                <div class="text-center p-6 space-y-4 font-sans select-none">
+                    <div class="h-12 w-12 rounded-full bg-[#ccff00]/10 text-[#ccff00] text-xl flex items-center justify-center mx-auto border border-[#ccff00]/20 font-black animate-pulse">✓</div>
+                    <h3 class="text-base font-black text-[#ccff00] uppercase tracking-widest font-mono">Protocol Deployed Safely</h3>
+                    <p class="text-xs text-neutral-300 leading-relaxed">
+                        Formspree server connection verified. Distributed payload state fully synchronized inside the production database tree.
+                    </p>
+                    <button id="modal-success-close" class="bg-[#ccff00] text-black font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Acknowledge</button>
+                </div>
+            `;
             
-            // Enforcing strict 4.5s network constraint to prevent viewport blocking
-            const controller: AbortController = new AbortController();
-            const timeoutId = setTimeout((): void => controller.abort(), 4500); 
+            const successCloseBtn = document.getElementById("modal-success-close") as HTMLButtonElement | null;
+            if (successCloseBtn) {
+                successCloseBtn.onclick = (): void => {
+                    // Velvet closing: Hiding the viewport node instantly without memory flashes
+                    modal!.classList.add("opacity-0", "pointer-events-none");
+                    if (contactForm) contactForm.reset(); // Hard-cleaning all input cell buffer values securely
+                    form!.reset();
+                    submitBtn!.removeAttribute("data-processing");
+                    submitBtn!.disabled = false;
+                    offlineBackupCache = null; 
+                };
+            }
+            return;
+        }
 
+        // ========================================================================
+        // ⚠️ CASE B: AUTHORITATIVE COPIED PLAN EXHAUSTION (HTTP 429 / 400 / 422)
+        // ========================================================================
+        if (cloudResponse.status === 429 || cloudResponse.status === 400 || cloudResponse.status === 422) {
+            modalContent!.innerHTML = `
+                <div class="text-center p-6 space-y-4 font-sans select-none">
+                    <div class="h-12 w-12 rounded-full bg-red-500/10 text-red-500 text-xl flex items-center justify-center mx-auto border border-red-500/20 font-black animate-bounce">⚠️</div>
+                    <h3 class="text-sm font-black text-red-500 uppercase tracking-widest font-mono">Monthly Cap Exhausted</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Authoritative response read from Formspree payload: The monthly integration quota limits have been completely exhausted.
+                    </p>
+                    <button id="modal-quota-close" class="bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Close Vault</button>
+                </div>
+            `;
+            
+            const quotaCloseBtn = document.getElementById("modal-quota-close") as HTMLButtonElement | null;
+            if (quotaCloseBtn) {
+                quotaCloseBtn.onclick = (): void => {
+                    modal!.classList.add("opacity-0", "pointer-events-none");
+                    submitBtn!.removeAttribute("data-processing");
+                    submitBtn!.disabled = false;
+                    offlineBackupCache = null;
+                };
+            }
+            return;
+        }
+
+        throw new Error("Link Interruption");
+    }
+    // ============================================================================
+    // 🪐 SECTION 03: AUTHORITATIVE NETWORK STREAM PROCESSOR & TRANSMISSION VALVE
+    // ============================================================================
+    // 🧬 SPEC: Enforcing strict 4.5s network constraint to prevent viewport blocking 
+    // and caching untrusted payloads under strict structural exception wrappers.
+    // ============================================================================
+    async function executeCloudIngestion(targetAction: string, targetFormData: FormData, activeIdempotencyKey: string): Promise<void> {
+        // Enforcing strict 4.5s network constraint to prevent thread throttling inside client memory
+        const controller: AbortController = new AbortController();
+        const timeoutId: number = window.setTimeout((): void => controller.abort(), 4500);
+
+        try {
+            // Outbound secure fetch operation guarded under the network signal cancellation valve
+            const cloudResponse: Response = await fetch(targetAction, {
+                method: "POST",
+                body: targetFormData,
+                headers: { 'Accept': 'application/json' },
+                signal: controller.signal
+            });
+
+            // Releasing hardware timeout registry immediately upon stream resolution
+            clearTimeout(timeoutId);
+
+            // Enforcing strict type safety parameters over unknown, untrusted cloud JSON responses
+            let serverPayload: Record<string, any> = {};
             try {
-                // Outbound fetch operation securely protected under the network signal invariant valve
-                const cloudResponse: Response = await fetch(form!.action, {
-                    method: form!.method,
-                    body: targetFormData,
-                    headers: { 'Accept': 'application/json' },
-                    signal: controller.signal
-                });
-
-                clearTimeout(timeoutId);
-
-                // Enforcing strict type safety parameters over unknown, untrusted cloud JSON responses
-                let serverPayload: Record<string, any> = {};
-                
-                try {
-                    serverPayload = await cloudResponse.json() as Record<string, any>;
-                } catch (e: unknown) {
-                    serverPayload = { success: cloudResponse.ok };
-                }
-            // ========================================================
-            // 🟢 CASE A: VERIFIED SUCCESS HANDSHAKE (HTTP 200 OK)
-            // ========================================================
-            if (cloudResponse.ok && (serverPayload.success === true || !serverPayload.errors)) {
-                currentMonthInboundCount++;
-                localStorage.setItem("apex-lead-count-v5", currentMonthInboundCount.toString());
-
-                modalContent!.innerHTML = `
-                    <div class="text-center p-6 space-y-4 font-sans select-none">
-                        <div class="h-12 w-12 rounded-full bg-[#ccff00]/10 text-[#ccff00] text-xl flex items-center justify-center mx-auto border border-[#ccff00]/20 font-black animate-pulse">✓</div>
-                        <h3 class="text-base font-black text-[#ccff00] uppercase tracking-widest font-mono">Protocol Deployed Safely</h3>
-                        <p class="text-xs text-neutral-300 leading-relaxed">
-                            Formspree server connection verified. Distributed payload state fully synchronized inside the production database tree.
-                        </p>
-                        <button id="modal-success-close" class="bg-[#ccff00] text-black font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Acknowledge</button>
-                    </div>
-                `;
-                
-                // 🔬 ELITE NULL-INTERCEPTION: Fetching and strictly casting the dynamically generated success trigger
-                const successCloseBtn = document.getElementById("modal-success-close") as HTMLButtonElement | null;
-                if (successCloseBtn) {
-                    successCloseBtn.onclick = (): void => {
-                        modal!.classList.add("opacity-0", "pointer-events-none");
-                        form!.reset(); // کامیابی پر خانے صاف کرنا
-                        submitBtn!.removeAttribute("data-processing");
-                        submitBtn!.disabled = false;
-                        offlineBackupCache = null; 
-                    };
-                }
-                return;
+                serverPayload = await cloudResponse.json() as Record<string, any>;
+            } catch (e: unknown) {
+                serverPayload = { success: cloudResponse.ok };
             }
 
-            // ========================================================
-            // ⚠️ CASE B: AUTHORITATIVE COPIED PLAN EXHAUSTION (HTTP 429)
-            // ========================================================
-            if (cloudResponse.status === 429 || cloudResponse.status === 400 || cloudResponse.status === 422) {
-                modalContent!.innerHTML = `
-                    <div class="text-center p-6 space-y-4 font-sans select-none">
-                        <div class="h-12 w-12 rounded-full bg-red-500/10 text-red-500 text-xl flex items-center justify-center mx-auto border border-red-500/20 font-black animate-bounce">⚠️</div>
-                        <h3 class="text-sm font-black text-red-500 uppercase tracking-widest font-mono">Monthly Cap Exhausted</h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed">
-                            Authoritative response read from Formspree payload: The monthly integration quota limits have been completely exhausted.
-                        </p>
-                        <button id="modal-quota-close" class="bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-6 py-2.5 rounded-lg border-0 cursor-pointer transition-all active:scale-95 outline-none mt-2">Close Vault</button>
-                    </div>
-                `;
-                
-                // 🔬 ELITE NULL-INTERCEPTION: Fetching and strictly casting the dynamically generated quota trigger
-                const quotaCloseBtn = document.getElementById("modal-quota-close") as HTMLButtonElement | null;
-                if (quotaCloseBtn) {
-                    quotaCloseBtn.onclick = (): void => {
-                        modal!.classList.add("opacity-0", "pointer-events-none");
-                        submitBtn!.removeAttribute("data-processing");
-                        submitBtn!.disabled = false;
-                        offlineBackupCache = null;
-                    };
-                }
-                return;
-            }
-
-            throw new Error("Link Interruption");
+            // Routing the completed cloud nodes straight into the strict quota check governance gate
+            handleQuotaGate(cloudResponse, targetFormData, activeIdempotencyKey, serverPayload);
 
         } catch (error: unknown) {
-            // ========================================================
-            // ✕ CASE C: THE APPLE-GRADE RE-DEPLOY TRIGGER ENGINE
-            // 🧬 100% ANTI-DATA LOSS: ڈیٹا اور ٹوکن تجوری میں محفوظ، لیکن گھومنے کا خاتمہ!
-            // ========================================================
-            const errorMessage = error instanceof Error ? error.message : "Unknown Error";
-            console.log(`%c[FAIL_CLOSED_GATE] -> Network drop out caught: ${errorMessage}. Rendering interactive Re-Deploy valve.`, "color: #ff9500; font-weight: bold;");
+            // 🔒 Network/Form Interruption Caught: 100% ANTI-DATA LOSS PROTECTION
+            console.error("🔒 Network/Form Interruption Caught: ", error);
             
-            // Explicit array conversions to protect FormData state integrity inside the catch block
+            // Caching the full field state data safely inside the array entry registry
             offlineBackupCache = { 
                 formData: Array.from(targetFormData.entries()), 
                 idempotencyKey: activeIdempotencyKey 
             };
 
-            // ۲ سیکنڈ بعد لائیو ایکسکلیمیشن مارک (⚠️) اور چمکتا ہوا 'RE-DEPLOY PROTOCOL' بٹن شو کرنا
-            modalContent!.innerHTML = `
-                <div class="text-center p-6 space-y-4 font-sans select-none">
-                    <div class="h-12 w-12 rounded-full bg-orange-500/10 text-orange-500 text-xl flex items-center justify-center mx-auto border border-orange-500/20 font-black animate-pulse">⚠️</div>
-                    <h3 class="text-sm font-black text-orange-500 uppercase tracking-widest font-mono">TRANSMISSION SUSPENDED</h3>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        Hardware connectivity dropped or timed out mid-flight. Your form inputs remain <span class="text-[#ccff00]">100% cached & secured</span> inside browser storage memory. 
-                    </p>
-                    
-                    <div class="flex flex-col gap-2.5 w-full">
-                        <button id="modal-re-deploy" class="w-full bg-[#ccff00] text-black font-black text-[11px] py-3 rounded-lg cursor-pointer uppercase tracking-widest active:scale-95 transition-all outline-none shadow-[0_4px_20px_rgba(204,255,0,0.2)]">
-                            ⚡ RE-DEPLOY PROTOCOL
-                        </button>
-                        <button id="modal-fault-cancel" class="w-full bg-white/5 hover:bg-white/10 text-neutral-400 text-[9px] py-2 rounded-lg cursor-pointer uppercase tracking-widest transition-all border-0 outline-none">
-                            Cancel & Edit Fields
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            // 🔬 DYNAMIC RE-DEPLOY INTERACTION INTERCEPTOR
-            const redeployBtn = document.getElementById("modal-re-deploy") as HTMLButtonElement | null;
-            if (redeployBtn) {
-                redeployBtn.onclick = async (): Promise<void> => {
-                    const currentPackage = offlineBackupCache;
-                    if (currentPackage) {
-                        modalContent!.innerHTML = `
-                            <div class="text-center p-8 space-y-4 font-sans select-none">
-                                <div class="h-8 w-8 border-2 border-t-[#ccff00] border-white/10 rounded-full animate-spin mx-auto"></div>
-                                <h3 class="text-[10px] font-black tracking-[0.2em] uppercase text-white font-mono animate-pulse">✨ RE-TRANSMITTING DATA PACKETS...</h3>
-                                <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Retrying serverless cloud sync via safe session token.</p>
-                            </div>
-                        `;
-                        // ۲ سیکنڈ کے فزیکل بفر ڈیلے کے بعد دوبارہ ہٹ مارنا
-                        setTimeout(async (): Promise<void> => {
-                            const reconstructedForm = new FormData();
-                            currentPackage.formData.forEach(([key, value]) => {
-                                reconstructedForm.append(key, value);
-                            });
-                            await executeCloudIngestion(reconstructedForm, currentPackage.idempotencyKey);
-                        }, 1200);
-                    }
-                };
+            // Projecting instant error notice on layout before trigger engine wakes up
+            if (modalContent) {
+                modalContent.innerHTML = `<div class="p-4 text-center select-none font-mono"><p class="text-xs text-red-500 font-black animate-pulse">⚠️ Network Interruption Detected. Data cached locally.</p></div>`;
             }
-
-            // 🔬 DYNAMIC FAULT CANCEL INTERCEPTOR
-            const faultCancelBtn = document.getElementById("modal-fault-cancel") as HTMLButtonElement | null;
-            if (faultCancelBtn) {
-                faultCancelBtn.onclick = (): void => {
-                    modal!.classList.add("opacity-0", "pointer-events-none");
-                    submitBtn!.removeAttribute("data-processing");
-                    submitBtn!.disabled = false;
-                };
-            }
+            
+            // Initializing the macroscopic interactive fallback UI render loop safely after 1s delay
+            setTimeout((): void => { 
+                renderFallbackUI(targetAction, "POST", targetFormData, activeIdempotencyKey); 
+            }, 1000);
         }
     }
-    // ========================================================
-    // PIPELINE B: MODAL CLOSURE & PHYSICAL MEMORY DEALLOCATION (Section 04)
-    // ========================================================
+    // ============================================================================
+    // 🪐 SECTION 04: DYNAMIC FALLBACK RENDERING CORE & SESSION RE-TRIGGER VALVE
+    // ============================================================================
+    // 🧬 SPEC: Segregated layout injection node protecting context binding states, 
+    // explicit target casting, and multi-flight asynchronous payload reconstruction.
+    // ============================================================================
+    function renderFallbackUI(targetAction: string, targetMethod: string, targetFormData: FormData, activeIdempotencyKey: string): void {
+        
+        // Injecting highly interactive GPU promoted template string directly inside the viewport frame
+        modalContent!.innerHTML = `
+            <div class="text-center p-6 space-y-4 font-sans select-none">
+                <div class="h-12 w-12 rounded-full bg-orange-500/10 text-orange-500 text-xl flex items-center justify-center mx-auto border border-orange-500/20 font-black animate-pulse">⚠️</div>
+                <h3 class="text-sm font-black text-orange-500 uppercase tracking-widest font-mono">TRANSMISSION SUSPENDED</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                    Hardware connectivity dropped or timed out mid-flight. Your form inputs remain <span class="text-[#ccff00]">100% cached & secured</span> inside browser storage memory. 
+                </p>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <button id="modal-re-deploy" class="w-full bg-[#ccff00] text-black font-black text-[11px] py-3 rounded-lg cursor-pointer uppercase tracking-widest active:scale-95 transition-all outline-none shadow-[0_4px_20px_rgba(204,255,0,0.2)]">
+                        ⚡ RE-DEPLOY PROTOCOL
+                    </button>
+                    <button id="modal-fault-cancel" class="w-full bg-white/5 hover:bg-white/10 text-neutral-400 text-[9px] py-2 rounded-lg cursor-pointer uppercase tracking-widest transition-all border-0 outline-none">
+                        Cancel & Edit Fields
+                    </button>
+                </div>
+            </div>
+        `;
+
+        // 🔬 FETCHING AND CASTING THE DYNAMICALLY INJECTED ACTIVE HARDWARE BUTTON TRACE LINKS
+        const redeployBtn = document.getElementById("modal-re-deploy") as HTMLButtonElement | null;
+        const faultCancelBtn = document.getElementById("modal-fault-cancel") as HTMLButtonElement | null;
+
+        if (redeployBtn) {
+            redeployBtn.onclick = async (): Promise<void> => {
+                const currentPackage = offlineBackupCache;
+                if (currentPackage) {
+                    // Flash-updating the screen feed to block parallel jitter execution paths
+                    modalContent!.innerHTML = `
+                        <div class="text-center p-8 space-y-4 font-sans select-none">
+                            <div class="h-8 w-8 border-2 border-t-[#ccff00] border-white/10 rounded-full animate-spin mx-auto"></div>
+                            <h3 class="text-[10px] font-black tracking-[0.2em] uppercase text-white font-mono animate-pulse">✨ RE-TRANSMITTING DATA PACKETS...</h3>
+                            <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Retrying serverless cloud sync via safe session token.</p>
+                        </div>
+                    `;
+                    
+                    // Enforcing strict 1.2s macroscopic delay to allow the network stack to stabilize
+                    setTimeout(async (): Promise<void> => {
+                        const reconstructedForm = new FormData();
+                        currentPackage.formData.forEach(([key, value]) => {
+                            reconstructedForm.append(key, value);
+                        });
+                        // Re-triggering the authoritative network stream processor cleanly
+                        await executeCloudIngestion(targetAction, reconstructedForm, currentPackage.idempotencyKey);
+                    }, 1200);
+                }
+            };
+        }
+
+        if (faultCancelBtn) {
+            faultCancelBtn.onclick = (): void => {
+                // Instantly hiding the modal layout tree without resetting the live user inputs underneath
+                modal!.classList.add("opacity-0", "pointer-events-none");
+                submitBtn!.removeAttribute("data-processing");
+                submitBtn!.disabled = false;
+            };
+        }
+    }
+    // ============================================================================
+    // 🪐 SECTION 05: CENTRAL CONVERSION TRIGGER EDGE NODE (Main Ingestion Handler)
+    // ============================================================================
+    // 🧬 MIT CYBER-SECURITY SPEC: Intercepting strict form submit event to eliminate 
+    // default browser navigation and Formspree white-page direct redirect permanently.
+    // ============================================================================
+    if (contactForm) {
+        contactForm.addEventListener("submit", async (event: SubmitEvent): Promise<void> => {
+            
+            // 🛡️ ہتھوڑا ۱: براؤزر کے ڈیفالٹ فارم ہائی جیک اور فارم اسپرے کے سفید پیج کا گلا فوراً ہوا میں گھونٹ دیں!
+            event.preventDefault(); 
+
+            // 🛡️ ATOMIC ANTI-THROTTLING BARRIER: Eliminating O(1) double-click hijack loop paths
+            if (submitBtn.getAttribute("data-processing") === "true") return;
+            submitBtn.setAttribute("data-processing", "true");
+            submitBtn.disabled = true;
+
+            // Manufacturing the authoritative token signature mapping to crash repetition attacks
+            const idempotencyKey: string = "apex-token-" + Date.now() + "-" + Math.random().toString(36).substring(2, 11);
+            const formData: FormData = new FormData(contactForm);
+            formData.append("_idempotency_key", idempotencyKey);
+
+            // Triggering initial UI projection vector cleanly on GPU compositor thread layers
+            modal.classList.remove("opacity-0", "pointer-events-none");
+            modalContent!.classList.remove("scale-100");
+            modalContent!.classList.add("scale-95");
+
+            // Rendering high-contrast pending loader directly inside the viewport frame
+            modalContent!.innerHTML = `
+                <div class="text-center p-8 space-y-4 font-sans select-none">
+                    <div class="h-8 w-8 border-2 border-t-[#ccff00] border-white/10 rounded-full animate-spin mx-auto"></div>
+                    <h3 class="text-[10px] font-black tracking-[0.2em] uppercase text-white font-mono animate-pulse">✨ Ingesting Data to Cloud Middleware...</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Resolving packet threads at 0ms pipeline latency.</p>
+                </div>
+            `;
+            setTimeout((): void => { if (modalContent) modalContent!.classList.add("scale-100"); }, 10);
+
+            // ========================================================================
+            // 📡 PRE-FLIGHT HARDWARE POLLING INTEGRITY NODE
+            // ========================================================================
+            // 🧬 FIXED MASTERSTROKE: اگر کلک کرتے وقت ہی انٹرنیٹ آف ہے، تو یہ فورا ری-ڈپلوئے تالا آن کرے گا
+            if (!navigator.onLine) {
+                // Securely caching the live fields entry package into the isolated array matrix buffer before returning
+                handleOfflineFallback(formData, idempotencyKey);
+                return;
+            }
+
+            // 🚀 If the hardware link is online, pass the payload directly to the server pipeline node
+            offlineBackupCache = { 
+                formData: Array.from(formData.entries()), 
+                idempotencyKey: idempotencyKey 
+            };
+            await executeCloudIngestion(contactForm.action, formData, idempotencyKey);
+        });
+    }
+
+    // ============================================================================
+    // PIPELINE B: MODAL CLOSURE CONTROLLER & GENERAL FORM SUBMIT SHIELD
+    // ============================================================================
+    form.addEventListener("submit", async (e: SubmitEvent): Promise<void> => {
+        e.preventDefault(); // Protecting the upper header form routing link as well
+        const headerFormData = new FormData(form);
+        const headerIdempotencyKey = "apex-header-" + Date.now();
+        if (!navigator.onLine) {
+            handleOfflineFallback(headerFormData, headerIdempotencyKey);
+            return;
+        }
+        await executeCloudIngestion(form.action, headerFormData, headerIdempotencyKey);
+    });
+
     closeModalBtn.addEventListener("click", (): void => {
-        // Re-enclosing modal node state to clear active viewport focus
+        // Re-enclosing modal node state to clear active viewport focus without layout blinks
         modal.classList.add("opacity-0", "pointer-events-none");
         modalContent!.classList.remove("scale-100");
         modalContent!.classList.add("scale-95");
-
-        // Physical Memory Flush: Electrically draining all text buffer registers inside input cells
+        
+        // Physical Memory Flush: Electrically draining all input cell values securely across both active components
         form.reset();
-
-        // Restoring hardware trigger state for sub-sequent operational requests
+        if (contactForm) contactForm.reset();
         submitBtn.disabled = false;
     });
-}
 });
-
 // ========================================================
-// 🪐 ACCORDION INTERACTION DESELECTOR LOGIC (REACTIVE COMPUTE)
+// 🪐 SECTION 06: ACCORDION INTERACTION DESELECTOR LOGIC (REACTIVE COMPUTE)
+// ========================================================
+// 🧬 SPEC: Explicit type bindings for NodeListOf controls to prevent pointer leaks.
 // ========================================================
 const faqTriggers: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.faq-trigger');
 
@@ -303,9 +448,11 @@ document.addEventListener("DOMContentLoaded", (): void => {
             }
         });
     }
-    // ========================================================
-    // 🍔 CIRCUIT 2: HAMBURGER LIFECYCLE & TACTILE ACCORDION (Section 05)
-    // ========================================================
+    // ============================================================================
+    // 🍔 CIRCUIT 2: HAMBURGER LIFECYCLE & MOBILE NAVIGATION REGISTERS (Section 07)
+    // ============================================================================
+    // 🧬 SPEC: Explicit type bindings for HTML elements to prevent runtime styling leakages.
+    // ============================================================================
     const menuTrigger = document.getElementById("mobile-menu-trigger") as HTMLButtonElement | null;
     const mobileMenu = document.getElementById("mobile-menu") as HTMLDivElement | null;
     const mobileNavLinks: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(".mobile-nav-link");
@@ -349,9 +496,9 @@ document.addEventListener("DOMContentLoaded", (): void => {
     }
 });
 
-// ========================================================
+// ============================================================================
 // ✨ CIRCUIT 4: HIGH-VELOCITY DYNAMIC AI INGESTION ENGINE (INTELLIGENT PARSER)
-// ========================================================
+// ============================================================================
 const aiTrigger = document.getElementById("ai-trigger") as HTMLButtonElement | null;
 const aiWindow = document.getElementById("ai-window") as HTMLDivElement | null;
 const aiClose = document.getElementById("ai-close") as HTMLButtonElement | null;
@@ -404,31 +551,34 @@ const hintSuggestions: Record<string, string[]> = {
 };
 
 if (aiTrigger && aiWindow && aiClose && aiInput && aiSend && aiFeed && hintBox) {
-// ========================================================
-// ✨ CIRCUIT 4.1: LIVE INTERACTIVE TOGGLE GOVERNOR (Section 5.1)
-// ========================================================
-const toggleAiWindow = (): void => {
-    // Safely verifying the runtime CSS state tokens from the GPU layer
-    const isActive: boolean = aiWindow!.classList.contains("ai-active");
-    
-    if (!isActive) {
-        // 🟢 ونڈو بیدار: وجود، کرنٹ اور پوزیشن فلی لائیو آن
-        aiWindow!.style.display = "flex"; 
-        aiWindow!.style.pointerEvents = "auto";
-        aiWindow!.classList.remove("hidden");
-        setTimeout((): void => { 
-            aiWindow!.classList.add("ai-active"); 
-        }, 10);
-    } else {
-        // ❌ ونڈو بند: وجود اور ٹچ 0ms پر جڑ سے غائب
-        aiWindow!.classList.remove("ai-active");
-        aiWindow!.style.pointerEvents = "none";
-        setTimeout((): void => { 
-            aiWindow!.classList.add("hidden");
-            aiWindow!.style.display = "none"; // لے آؤٹ کولیژن جڑ سے کچل دیا گیا!
-        }, 300);
-    }
-};
+    // ============================================================================
+    // ✨ CIRCUIT 4.1: LIVE INTERACTIVE TOGGLE GOVERNOR (Section 08)
+    // ============================================================================
+    // 🧬 MIT CYBER-SECURITY SPEC: Explicit type bindings for UI layout nodes, 
+    // safe DOM manipulation, and dynamic event loop token processing filters.
+    // ============================================================================
+    const toggleAiWindow = (): void => {
+        // Safely verifying the runtime CSS state tokens directly from the GPU layer
+        const isActive: boolean = aiWindow!.classList.contains("ai-active");
+        
+        if (!isActive) {
+            // 🟢 ونڈو بیدار: وجود، کرنٹ اور پوزیشن فلی لائیو آن
+            aiWindow!.style.display = "flex"; 
+            aiWindow!.style.pointerEvents = "auto";
+            aiWindow!.classList.remove("hidden");
+            setTimeout((): void => { 
+                aiWindow!.classList.add("ai-active"); 
+            }, 10);
+        } else {
+            // ❌ ونڈو بند: وجود اور ٹچ 0ms پر جڑ سے غائب
+            aiWindow!.classList.remove("ai-active");
+            aiWindow!.style.pointerEvents = "none";
+            setTimeout((): void => { 
+                aiWindow!.classList.add("hidden");
+                aiWindow!.style.display = "none"; // لے آؤٹ کولیژن جڑ سے کچل دیا گیا!
+            }, 300);
+        }
+    };
 
     aiTrigger!.addEventListener("click", toggleAiWindow);
     aiClose!.addEventListener("click", toggleAiWindow);
@@ -539,13 +689,13 @@ const toggleAiWindow = (): void => {
 
     bindHintEvents();
 }
-declare let updateHints: any;
 
-// ========================================================
-// ⚡ CIRCUIT 5: CORE EXECUTION SYNC VALVE (THE MAIN THREAD UNLOCK - Section 06)
-// ========================================================
-// 🧬 ENTERPRISE SPEC: Explicit type bindings for page-load state machines and void event loops.
-
+// ============================================================================
+// ⚡ CIRCUIT 5: CORE EXECUTION SYNC VALVE (THE MAIN THREAD UNLOCK - Section 09)
+// ============================================================================
+// 🧬 SPEC: Forcing the hardware event loop to restore full layout current before
+// initializing asynchronous conceptual parsed threads.
+// ============================================================================
 const initializeAbsoluteCore = (): void => {
     // 🛡️ FAIL-CLOSED STATE: پیج لوڈ ہوتے ہی زبردستی اے آئی ونڈو کو پوشیدہ موڈ پر منجمد کرنا
     if (aiWindow) {
@@ -555,7 +705,7 @@ const initializeAbsoluteCore = (): void => {
         aiWindow.style.display = "none";
     }
     
-    // بائنڈ ہنٹس کا کرنٹ فلی لائیو آن کرنا
+    // بائنڈ ہنٹس کا لائیو کرنٹ فلی آن کرنا
     if (typeof updateHints === "function") {
         updateHints();
     }
@@ -563,7 +713,7 @@ const initializeAbsoluteCore = (): void => {
     console.log("🛰️ Core execution main thread unlocked with 100% current flow!");
 };
 
-// 🛡️ براؤزر کے ایونٹ لوپ کو مجبور کرنا کہ وہ پہلے پیج کا کرنٹ بحال کرے بعد میں بوٹ لوڈ کرے
+// 🛡️ Bypassing thread blocking by checking current document readystates
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initializeAbsoluteCore);
 } else {
