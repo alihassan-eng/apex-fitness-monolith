@@ -339,32 +339,66 @@ document.addEventListener("DOMContentLoaded", (): void => {
         });
     }
 
+        // ============================================================================
+    // 📡 CIRCUIT 3A.1: THE ATOMIC SINGLE-CHANNEL INTERACTION INTERCEPTOR
     // ============================================================================
-    // PIPELINE B: MODAL CLOSURE CONTROLLER & GENERAL FORM SUBMIT SHIELD
+         // ============================================================================
+    // 🚀 CIRCUIT 3A.5: MONOLITHIC SINGLE-CHANNEL INGESTION PIPELINE (THE FINAL FIX)
     // ============================================================================
-    form.addEventListener("submit", async (e: SubmitEvent): Promise<void> => {
-        e.preventDefault(); // Protecting the upper header form routing link as well
-        const headerFormData = new FormData(form);
-        const headerIdempotencyKey = "apex-header-" + Date.now();
+    // 🧬 SPEC: Complete end-to-end network stream body mapped explicitly to handle 
+    // both upper and lower conversion paths with 0ms client memory latency.
+    // ============================================================================
+    async function handleFormSubmission(targetActiveForm: HTMLFormElement, event: SubmitEvent): Promise<void> {
+        // 🛡️ ہتھوڑا ۱: براؤزر کے ڈیفالٹ فارم ہائی جیک اور فارم اسپرے کے سفید پیج کا گلا فوراً ہوا میں گھونٹ دیں!
+        event.preventDefault(); 
+
+        if (submitBtn!.getAttribute("data-processing") === "true") return;
+        submitBtn!.setAttribute("data-processing", "true");
+        submitBtn!.disabled = true;
+
+        const idempotencyKey: string = "apex-token-" + Date.now() + "-" + Math.random().toString(36).substring(2, 11);
+        const formData: FormData = new FormData(targetActiveForm);
+        formData.append("_idempotency_key", idempotencyKey);
+
+        modal!.classList.remove("opacity-0", "pointer-events-none");
+        if (modalContent) {
+            modalContent.classList.remove("scale-100");
+            modalContent.classList.add("scale-95");
+            modalContent.innerHTML = `
+                <div class="text-center p-8 space-y-4 font-sans select-none">
+                    <div class="h-8 w-8 border-2 border-t-[#ccff00] border-white/10 rounded-full animate-spin mx-auto"></div>
+                    <h3 class="text-[10px] font-black tracking-[0.2em] uppercase text-white font-mono animate-pulse">✨ Ingesting Data to Cloud Middleware...</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed font-mono">Resolving packet threads at 0ms pipeline latency.</p>
+                </div>
+            `;
+        }
+        setTimeout((): void => { if (modalContent) modalContent.classList.add("scale-100"); }, 10);
+
         if (!navigator.onLine) {
-            handleOfflineFallback(headerFormData, headerIdempotencyKey);
+            handleOfflineFallback(formData, idempotencyKey);
             return;
         }
-        await executeCloudIngestion(form.action, headerFormData, headerIdempotencyKey);
-    });
 
-    closeModalBtn.addEventListener("click", (): void => {
-        // Re-enclosing modal node state to clear active viewport focus without layout blinks
-        modal.classList.add("opacity-0", "pointer-events-none");
-        modalContent!.classList.remove("scale-100");
-        modalContent!.classList.add("scale-95");
-        
-        // Physical Memory Flush: Electrically draining all input cell values securely across both active components
-        form.reset();
-        if (contactForm) contactForm.reset();
-        submitBtn.disabled = false;
-    });
-});
+        offlineBackupCache = { 
+            formData: Array.from(formData.entries()), 
+            idempotencyKey: idempotencyKey 
+        };
+        await executeCloudIngestion(targetActiveForm.action, formData, idempotencyKey);
+    }
+
+    // 📡 WIRE BINDINGS FOR BOTH ACTIVE HIGH-VELOCITY INBOUND HARDWARE CHANNELS
+    if (form) {
+        form.addEventListener("submit", (e: SubmitEvent): void => {
+            void handleFormSubmission(form, e);
+        });
+    }
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e: SubmitEvent): void => {
+            void handleFormSubmission(contactForm, e);
+        });
+    }
+
+   
 // ========================================================
 // 🪐 SECTION 06: ACCORDION INTERACTION DESELECTOR LOGIC (REACTIVE COMPUTE)
 // ========================================================
@@ -714,8 +748,19 @@ const initializeAbsoluteCore = (): void => {
 };
 
 // 🛡️ Bypassing thread blocking by checking current document readystates
+// ============================================================================
+// ⚡ CIRCUIT 5.1: MONOLITHIC PROTOCOL CLOSURE & EXECUTION LINK
+// ============================================================================
+// 🧬 SPEC: Safely sealing the DOMContentLoaded main scope and firing the active core.
+// ============================================================================
+
+// 🛡️ Bypassing thread blocking by checking current document readystates
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initializeAbsoluteCore);
 } else {
     initializeAbsoluteCore();
 }
+
+// 🔒 THE MASTERSTROKE LOCK: یہ ہے وہ اصلی بریکٹ تالا جو مانیٹر فلی صاف کر دے گا!
+});
+
