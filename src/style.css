@@ -80,15 +80,6 @@
   --border-glow: rgba(255, 255, 255, 0.05);
 }
 
-/* 🌓 UPGRADED: 55% REBALANCED CHARCOAL SMOKE INVERSION LAYER */
-body.light-execution-path {
-  --bg-monolith: #4a4d53;
-  --bg-header: rgba(74, 77, 83, 0.85);
-  --text-pure: #ffffff;
-  --text-muted: #d1d5db;
-  --surface-card: #2b2d31;
-  --border-glow: rgba(255, 255, 255, 0.08);
-}
 
 /* 🖥️ GLOBAL HARDWARE LAYOUT OVERRIDE */
 body {
@@ -206,4 +197,147 @@ select {
 /* ماؤس لانے پر پٹی کا اور زیادہ تیز چمکنا تاکہ یوزر کو پکا ہینڈ شیک فیڈ بیک ملے */
 #ai-feed::-webkit-scrollbar-thumb:hover {
   background: rgba(204, 255, 0, 0.8) !important; /* ۱۰۰٪ فل وولٹ گلو ایکشن */
+}
+/* =========================================================
+   APEX ENTERPRISE LIGHT MODE (FINAL POLISHED EDITION)
+   ========================================================= */
+html.light,
+body.light-execution-path {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+}
+
+/* 1. ہیڈر اور فوٹر */
+body.light-execution-path header {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.light-execution-path footer {
+  background-color: #f8fafc !important;
+  border-top: 1px solid #cbd5e1 !important;
+}
+
+body.light-execution-path header a,
+body.light-execution-path nav a {
+  color: #0f172a !important;
+}
+
+body.light-execution-path nav a:hover {
+  color: #4d7c0f !important;
+}
+
+body.light-execution-path section,
+body.light-execution-path main {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+}
+
+/* 2. صرف اصل کارڈز اور FAQ ڈبوں کو صاف شیڈ اور بارڈر دینا (فالتو خالی ڈبوں کو چھوڑ کر) */
+body.light-execution-path article,
+body.light-execution-path details,
+body.light-execution-path summary,
+body.light-execution-path form,
+body.light-execution-path [class*="bg-[#141517]"],
+body.light-execution-path [class*="bg-neutral-9"],
+body.light-execution-path [class*="bg-zinc-9"],
+body.light-execution-path [class*="bg-surface"] {
+  background-color: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05) !important;
+  color: #09090b !important;
+}
+
+/* 3. ہیڈنگز اور متن */
+body.light-execution-path h1,
+body.light-execution-path h2,
+body.light-execution-path h3,
+body.light-execution-path h4 {
+  color: #09090b !important;
+}
+
+body.light-execution-path p,
+body.light-execution-path li,
+body.light-execution-path label,
+body.light-execution-path summary {
+  color: #1e293b !important;
+}
+
+/* 4. برانڈ کا خاص ہرا رنگ ("FITNESS GOALS" اور "Apex" لوگو کے لیے) */
+body.light-execution-path h1 span,
+body.light-execution-path .text-\[\#ccff00\],
+body.light-execution-path .text-\[\#ecf542\],
+body.light-execution-path .text-brand-volt,
+body.light-execution-path [class*="text-[#ccff00]"],
+body.light-execution-path [class*="text-brand-volt"] {
+  color: #4d7c0f !important;
+}
+
+/* فوٹر اور ہیڈر کے سفید لوگو حصے ("Fitness") کو گہرا سیاہ کرنا */
+body.light-execution-path footer a span:last-child,
+body.light-execution-path header a span:last-child,
+body.light-execution-path .text-white,
+body.light-execution-path .text-text-pure {
+  color: #09090b !important;
+}
+
+/* نیون سبز بٹنوں (Join Now, Send) پر سیاہ تحریر برقرار رکھنا */
+body.light-execution-path a[class*="bg-[#ccff00]"],
+body.light-execution-path button[class*="bg-[#ccff00]"],
+body.light-execution-path button[type="submit"] {
+  background-color: #bef264 !important;
+  color: #09090b !important;
+  border: 1px solid #84cc16 !important;
+}
+
+body.light-execution-path a[class*="bg-[#ccff00]"] *,
+body.light-execution-path button[class*="bg-[#ccff00]"] *,
+body.light-execution-path button[type="submit"] * {
+  color: #09090b !important;
+}
+
+/* 5. فارم کے تمام ان پٹ خانوں کو صاف سفید اور واضح بارڈر والا بنانا */
+body.light-execution-path input,
+body.light-execution-path select,
+body.light-execution-path textarea {
+  background-color: #ffffff !important;
+  border: 1.5px solid #94a3b8 !important;
+  color: #09090b !important;
+  box-shadow: none !important;
+}
+
+body.light-execution-path input::placeholder,
+body.light-execution-path textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* 6. AI چیٹ ونڈو اور سجیشن بٹن */
+body.light-execution-path #ai-chat-window,
+body.light-execution-path [id*="chat"] {
+  background-color: #ffffff !important;
+  border: 1.5px solid #94a3b8 !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15) !important;
+}
+
+body.light-execution-path [id*="chat"] p,
+body.light-execution-path [id*="chat"] span,
+body.light-execution-path [id*="chat"] button:not([class*="bg-[#ccff00]"]) {
+  color: #0f172a !important;
+}
+
+body.light-execution-path [id*="chat"] button:not([class*="bg-[#ccff00]"]) {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* 7. تھیم بٹن اور موبائل ہیمبرگر بٹن */
+body.light-execution-path #theme-toggle,
+body.light-execution-path #mobile-menu-trigger {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+body.light-execution-path #mobile-menu-trigger span {
+  background-color: #09090b !important;
 }

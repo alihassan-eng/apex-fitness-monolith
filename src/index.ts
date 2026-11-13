@@ -446,42 +446,48 @@ document.addEventListener("DOMContentLoaded", (): void => {
     // ========================================================
     // 🪐 CIRCUIT 1: V8 LOCALSTORAGE THEME RESILIENCY SYSTEM (FIXED LOGIC)
     // ========================================================
+   const initThemeEngine = () => {
     const themeToggle = document.getElementById("theme-toggle") as HTMLButtonElement | null;
     const themeIcon = document.getElementById("theme-icon") as SVGElement | null;
 
-    if (themeToggle && themeIcon) {
-        const activePipeline: string | null = localStorage.getItem("apex-theme-state");
+    if (!themeToggle || !themeIcon) return;
 
-        if (activePipeline === "light") {
+    const sunSvg = `<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>`;
+    const moonSvg = `<path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+
+    const applyTheme = (isLight: boolean) => {
+        if (isLight) {
+            document.documentElement.classList.add("light");
             document.body.classList.add("light-execution-path");
             themeToggle.setAttribute("aria-checked", "true");
-            themeIcon.innerHTML = `
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-            `;
+            themeIcon.innerHTML = sunSvg;
+            themeIcon.style.color = "#f59e0b";
         } else {
-            themeIcon.innerHTML = `<path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>`;
+            document.documentElement.classList.remove("light");
+            document.body.classList.remove("light-execution-path");
+            themeToggle.setAttribute("aria-checked", "false");
+            themeIcon.innerHTML = moonSvg;
+            themeIcon.style.color = "#ccff00";
         }
+    };
 
-        themeToggle.addEventListener("click", (): void => {
-            const isLight: boolean = document.body.classList.toggle("light-execution-path");
+    const savedTheme = localStorage.getItem("apex-theme-state");
+    applyTheme(savedTheme === "light");
 
-            if (isLight) {
-                localStorage.setItem("apex-theme-state", "light");
-                themeToggle.setAttribute("aria-checked", "true");
-                themeIcon.innerHTML = `
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-                `;
-                console.log("%c[THEME_SWITCH] -> Light Ingestion Path Active (Sun Icon On).", "color: #fbbf24; font-weight: bold;");
-            } else {
-                localStorage.setItem("apex-theme-state", "dark");
-                themeToggle.setAttribute("aria-checked", "false");
-                themeIcon.innerHTML = `<path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>`;
-                console.log("%c[THEME_SWITCH] -> Monolith Dark Core Engaged (Moon Icon On).", "color: #06b6d4; font-weight: bold;");
-            }
-        });
-    }
+    themeToggle.onclick = () => {
+        const isCurrentlyLight = document.body.classList.contains("light-execution-path");
+        const nextIsLight = !isCurrentlyLight;
+        localStorage.setItem("apex-theme-state", nextIsLight ? "light" : "dark");
+        applyTheme(nextIsLight);
+    };
+};
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initThemeEngine);
+} else {
+    initThemeEngine();
+}
+
     // ============================================================================
     // 🍔 CIRCUIT 2: HAMBURGER LIFECYCLE & MOBILE NAVIGATION REGISTERS (Section 07)
     // ============================================================================
@@ -763,4 +769,30 @@ if (document.readyState === "loading") {
 
 // 🔒 THE MASTERSTROKE LOCK: یہ ہے وہ اصلی بریکٹ تالا جو مانیٹر فلی صاف کر دے گا!
 });
+const wireThemeButton = () => {
+    const btn = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-icon");
+    if (!btn || !icon) return;
+
+    const sunSvg = `<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>`;
+    const moonSvg = `<path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+
+    const updateUI = (isLight: boolean) => {
+        document.documentElement.classList.toggle("light", isLight);
+        document.body.classList.toggle("light-execution-path", isLight);
+        btn.setAttribute("aria-checked", String(isLight));
+        icon.innerHTML = isLight ? sunSvg : moonSvg;
+        icon.style.color = isLight ? "#f59e0b" : "#ccff00";
+    };
+
+    updateUI(localStorage.getItem("apex-theme-state") === "light");
+
+    btn.onclick = () => {
+        const nextState = !document.body.classList.contains("light-execution-path");
+        localStorage.setItem("apex-theme-state", nextState ? "light" : "dark");
+        updateUI(nextState);
+    };
+};
+
+wireThemeButton();
 
