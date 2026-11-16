@@ -795,4 +795,46 @@ const wireThemeButton = () => {
 };
 
 wireThemeButton();
+const wireMobileMenu = () => {
+    const btn = document.getElementById("mobile-menu-trigger");
+    const menu = document.getElementById("mobile-menu");
+    if (!btn || !menu) return;
+
+    const line1 = btn.querySelector(".id-line-1") as HTMLElement | null;
+    const line2 = btn.querySelector(".id-line-2") as HTMLElement | null;
+    const line3 = btn.querySelector(".id-line-3") as HTMLElement | null;
+
+    const setMenu = (isOpen: boolean) => {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        menu.classList.toggle("hidden", !isOpen);
+        menu.classList.toggle("-translate-y-2", !isOpen);
+        menu.classList.toggle("opacity-0", !isOpen);
+        menu.classList.toggle("translate-y-0", isOpen);
+        menu.classList.toggle("opacity-100", isOpen);
+
+        if (line1 && line2 && line3) {
+            line1.style.transform = isOpen ? "translateY(6px) rotate(45deg)" : "none";
+            line2.style.opacity = isOpen ? "0" : "1";
+            line3.style.transform = isOpen ? "translateY(-6px) rotate(-45deg)" : "none";
+        }
+    };
+
+    btn.onclick = (e) => {
+        e.stopPropagation();
+        const isCurrentlyOpen = btn.getAttribute("aria-expanded") === "true";
+        setMenu(!isCurrentlyOpen);
+    };
+
+    menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+        (link as HTMLElement).onclick = () => setMenu(false);
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target as Node) && !btn.contains(e.target as Node)) {
+            setMenu(false);
+        }
+    });
+};
+
+wireMobileMenu();
 
